@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="splv_sp0">
+        <item>茅箭区</item>
+        <item>张湾区</item>
+        <item>郧县</item>
+        <item>竹溪县</item>
+    </string-array>
+    
+    <string-array name="splv_sp1">
+        <item>张三</item>
+        <item>李四</item>
+        <item>王五</item>
+        <item>陈六</item>
+    </string-array>
+    
+    <string-array name="splv_sp2">
+        <item>一般贫困户</item>
+        <item>贫困户</item>
+    </string-array>
+    
+    <string-array name="splv_item_tv_left">
+        <item>户主:</item>
+        <item>成员:</item>
+        <item></item>
+        <item>住址:</item>
+    </string-array>
+    
+</resources>

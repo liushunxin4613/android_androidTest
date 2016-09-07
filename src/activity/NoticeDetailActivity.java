@@ -1,0 +1,25 @@
+package activity;
+
+import base.activity.BaseWebViewActivity;
+import util.data.ConfigUtil.HttpConfig;
+
+public class NoticeDetailActivity extends BaseWebViewActivity {
+
+	public final static String KEY_ID = "id";
+	public final static String KEY_TITLE = "title";
+	
+	@Override
+	public String getUriStr() {
+		String id = getIntent().getStringExtra(KEY_ID);
+		return HttpConfig.NOTICE_DETAIL_WITH_URL + id + HttpConfig.NOTICE_DETAIL_END_URL;
+	}
+	
+	@Override
+	public void initView() {
+		super.initView();
+		
+		getActionBar().setTitle(getIntent().getStringExtra(KEY_TITLE));
+		
+	}
+
+}

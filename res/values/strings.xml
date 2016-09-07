@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">竹溪扶贫大数据中心</string>
+    
+    <string name="image_string">img</string>
+    
+    <!-- 设置 -->
+    <string name="action_setting">设置</string>
+    <string name="action_user">账户信息</string>
+    <string name="action_exit_login">退出登录</string>
+    
+    <!-- MainActivity -->
+
+	<string name="ac_gridview_0">基础信息</string>
+	<string name="ac_gridview_1">电子地图</string>
+	<string name="ac_gridview_2">扶贫大数据</string>
+	<string name="ac_gridview_3">扶贫项目管理</string>
+	<string name="ac_gridview_4">扶贫考核</string>
+	<string name="ac_gridview_5">统计分析</string>
+	<string name="ac_gridview_6">通知公告</string>
+	<string name="ac_gridview_7">政策资讯</string>
+	
+	 <!-- DynameListView -->
+	 
+    <string name="refresh_normal">上拉刷新</string>
+    <string name="loadmore_normal">下拉刷新</string>
+    
+    <string name="refresh_will">上拉刷新</string>
+    <string name="loadmore_will">松开加载</string>
+    
+    <string name="refreshing">正在刷新&#8230;</string>
+    <string name="loadmoreing">正在加载&#8230;</string>
+    
+    <string name="refresh_stop">停止刷新</string>
+    <string name="loadmore_stop">停止加载</string>
+	
+    <!-- spinner -->
+    <string name="sp_item0">区县</string>
+    <string name="sp_item1">成员</string>
+    <string name="sp_item2">状态</string>
+    
+    <!-- 其他 -->
+    <string name="tv_0">户主</string>
+    <string name="tv_1">成员</string>
+    <string name="tv_3">住址</string>
+
+</resources>

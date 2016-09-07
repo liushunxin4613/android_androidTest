@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ContentDescription">
+        <ignore path="res/layout/activity_main.xml" />
+    </issue>
+    <issue id="RtlHardcoded">
+        <ignore path="res/layout/include_spinner_listview.xml" />
+        <ignore path="res/layout/item_textview.xml" />
+    </issue>
+    <issue id="UselessParent">
+        <ignore path="res/layout/include_spinner_listview.xml" />
+        <ignore path="res/layout/item_textview.xml" />
+    </issue>
+</lint>

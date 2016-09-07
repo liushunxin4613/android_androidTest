@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="DisableBaselineAlignment" >
+
+        <Spinner
+            android:id="@+id/splv_sp0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/view_margin_less"
+            android:layout_weight="1"
+            android:background="@drawable/spinner_selector"
+            android:popupBackground="@drawable/input_bg_focus"
+            android:prompt="@string/sp_item0"
+            android:entries="@array/splv_sp0" />
+
+        <Spinner
+            android:id="@+id/splv_sp1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/view_margin_less"
+            android:layout_weight="1"
+            android:background="@drawable/spinner_selector"
+            android:popupBackground="@drawable/input_bg_focus"
+            android:prompt="@string/sp_item1"
+            android:entries="@array/splv_sp1" />
+
+        <Spinner
+            android:id="@+id/splv_sp2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/view_margin_less"
+            android:layout_weight="1"
+            android:background="@drawable/spinner_selector"
+            android:popupBackground="@drawable/input_bg_focus"
+            android:prompt="@string/sp_item2"
+            android:entries="@array/splv_sp2" />
+    </LinearLayout>
+
+    <customLib.DynamicListView
+        android:id="@+id/splv_dylistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </customLib.DynamicListView>
+
+</LinearLayout>

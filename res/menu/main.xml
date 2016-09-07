@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.leo.androidtest.MainActivity" >
+
+    <item
+        android:icon="@drawable/ic_menu"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/action_setting">
+        <menu>
+            <item
+                android:id="@+id/setting0"
+                android:orderInCategory="101"
+                android:title="@string/action_user"/>
+            <item
+                android:id="@+id/setting1"
+                android:orderInCategory="102"
+                android:title="@string/action_exit_login"/>
+        </menu>
+    </item>
+
+</menu>
