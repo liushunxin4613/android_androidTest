@@ -11,14 +11,14 @@ public class NoticeDetailActivity extends BaseWebViewActivity {
 	@Override
 	public String getUriStr() {
 		String id = getIntent().getStringExtra(KEY_ID);
-		return HttpConfig.NOTICE_DETAIL_WITH_URL + id + HttpConfig.NOTICE_DETAIL_END_URL;
+		return HttpConfig.NOTICE_DETAIL_WITH_URL + id + HttpConfig.END_URL;
 	}
 	
 	@Override
 	public void initView() {
 		super.initView();
 		
-		getActionBar().setTitle(getIntent().getStringExtra(KEY_TITLE));
+		setTitle(getIntent().getStringExtra(KEY_TITLE));
 		
 	}
 

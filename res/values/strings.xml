@@ -8,6 +8,7 @@
     <!-- 设置 -->
     <string name="action_setting">设置</string>
     <string name="action_user">账户信息</string>
+    <string name="main_exit_remind">再按一次退出</string>
     <string name="action_exit_login">退出登录</string>
     
     <!-- MainActivity -->
@@ -20,6 +21,8 @@
 	<string name="ac_gridview_5">统计分析</string>
 	<string name="ac_gridview_6">通知公告</string>
 	<string name="ac_gridview_7">政策资讯</string>
+	
+	<string name="ac_gridview_8">贫困户详细信息</string>
 	
 	 <!-- DynameListView -->
 	 
@@ -44,5 +47,7 @@
     <string name="tv_0">户主</string>
     <string name="tv_1">成员</string>
     <string name="tv_3">住址</string>
+    <string name="tv_with">成员: </string>
+    <string name="tv_end">人</string>
 
 </resources>

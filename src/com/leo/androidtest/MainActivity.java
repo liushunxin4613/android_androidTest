@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import activity.BaseInfoActvity;
 import activity.FupinCheckActivity;
@@ -14,45 +16,45 @@ import activity.NoticeAnnouncementActvity;
 import activity.PolicyMessageActivity;
 import activity.StatisticsAnalyzeActivity;
 import adapter.GridViewAdapter;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
-import base.activity.BaseImmersionActivity;
+import base.activity.BaseActionBarThreeActivity;
 import android.widget.ScrollView;
+import android.widget.Toast;
 import customLib.ExpandGridView;
 import util.data.ConfigUtil.GridViewConfig;
 import util.data.ConfigUtil.MainActivityConfig;
 
-public class MainActivity extends BaseImmersionActivity implements OnItemClickListener{
+public class MainActivity extends BaseActionBarThreeActivity implements OnItemClickListener{
 
 	@Override
 	public int getRootViewId() {
 		return MainActivityConfig.LAYOUT_ID;
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.setting0://账户信息
-			
-			break;
-		case R.id.setting1://退出登录
-			
-			break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		getMenuInflater().inflate(R.menu.main, menu);
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		switch (item.getItemId()) {
+//		case R.id.setting0://账户信息
+//			
+//			break;
+//		case R.id.setting1://退出登录
+//			
+//			break;
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	//GridView
 	private ExpandGridView gridView;
@@ -67,12 +69,11 @@ public class MainActivity extends BaseImmersionActivity implements OnItemClickLi
 
 	private ScrollView scrollView;
 
+	@SuppressLint("ResourceAsColor")
 	@Override
 	public void initView() {
 		super.initView();
-		getActionBar().setDisplayShowHomeEnabled(false);
-		getActionBar().setHomeButtonEnabled(false);
-
+		
 		scrollView = (ScrollView) findViewById(GridViewConfig.SCROLLVIEW_LAYOUT_ID);
 
 		//GridView
@@ -102,7 +103,7 @@ public class MainActivity extends BaseImmersionActivity implements OnItemClickLi
 
 		gridView.setColumnWidth(getDisplayMetrics().widthPixels/numColumns);
 
-		gridViewAdapter.setParameter(numColumns, numColumns * GridViewConfig.ICON_WIDTH + GridViewConfig.REST_WIDTH);
+		gridViewAdapter.setParameter(numColumns, 2 * GridViewConfig.ICON_WIDTH + GridViewConfig.REST_WIDTH);
 
 		//设置点击事件
 		gridView.setOnItemClickListener(this);
@@ -131,6 +132,33 @@ public class MainActivity extends BaseImmersionActivity implements OnItemClickLi
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			startActivity(new Intent(this, activityClassArr[position]));
+	}
+	
+	
+	/**
+	 * 确定退出
+	 */
+	private boolean confirm = false;
+	
+	/**
+	 * 回退键
+	 */
+	@Override
+	public void onBackPressed() {
+		if (!confirm) {
+			confirm = true;
+			Toast.makeText(this, R.string.main_exit_remind, Toast.LENGTH_SHORT)
+			.show();
+			Timer timer = new Timer();
+			timer.schedule(new TimerTask() {
+				@Override
+				public void run() {
+					confirm = false;
+				}
+			}, 2000);
+		} else {
+			super.onBackPressed();
+		}
 	}
 
 }

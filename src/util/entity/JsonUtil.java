@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import android.util.Log;
 import util.data.ConfigUtil.JsonDataConfig;
 
-public class NoticeJsonUtil {
+public class JsonUtil {
 
 	public static String TAG = "NoticeJsonUtil";
 	

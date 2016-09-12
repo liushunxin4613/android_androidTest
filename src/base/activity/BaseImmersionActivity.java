@@ -6,9 +6,14 @@ import util.ui.SystemBarTintManager;
 import com.leo.androidtest.R;
 
 import android.graphics.drawable.Drawable;
-import android.view.MenuItem;
+import android.os.Bundle;
 
+/**
+ * 沉浸式通知栏效果的Activity
+ * 
+ */
 public class BaseImmersionActivity extends BaseActivity {
+
 	/**
 	 * 标题栏的字体颜色，是否为白色，默认为白色
 	 */
@@ -19,11 +24,12 @@ public class BaseImmersionActivity extends BaseActivity {
 	private int statusColor;
 	
 	private SystemBarTintManager systemBarManager;
-	
-	/**
-	 * 是否通过onOptionsItemSelected响应
-	 */
-	protected boolean isHome = true;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		KitKatUtils.setStatusBar(this, isLight);
+	}
 
 	/**
 	 * @return 返回通知栏的颜色，是否为白色
@@ -61,26 +67,11 @@ public class BaseImmersionActivity extends BaseActivity {
 	public void setBackgroundDrawable(Drawable drawable) {
 		this.getWindow().setBackgroundDrawable(drawable);
 	}
-
+	
 	@SuppressWarnings("deprecation")
 	@Override
 	public void initView() {
 		KitKatUtils.setStatusBar(this, isLight);
-		getActionBar().setDisplayShowHomeEnabled(true);
-		getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setDisplayShowTitleEnabled(true);
 		setStatusColor(getResources().getColor(R.color.immersionColor));
-	}
-	
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (isHome) {
-			int id = item.getItemId();
-			switch (id) {
-			case android.R.id.home:
-				onBackPressed();
-				return true;
-			}
-		}
-		return super.onOptionsItemSelected(item);
 	}
 }

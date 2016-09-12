@@ -14,5 +14,5 @@ public class BaseInfoActvity extends BaseWebViewActivity {
 	public String getUriStr() {
 		return HttpConfig.BASE_INFO_URL;
 	}
-
+	
 }

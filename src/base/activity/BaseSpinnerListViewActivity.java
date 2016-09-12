@@ -1,6 +1,6 @@
 package base.activity;
 
-import adapter.SpLVAdapter;
+import adapter.Tv2VerAdapter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -10,11 +10,11 @@ import customLib.DynamicListView;
 import customLib.DynamicListView.LoadMoreListener;
 import customLib.DynamicListView.RefreshListener;
 
-public class BaseSpinnerListViewActivity extends BaseImmersionActivity implements LoadMoreListener,RefreshListener,OnItemClickListener,OnItemSelectedListener{
+public class BaseSpinnerListViewActivity extends BaseActionBarCenterActivity implements LoadMoreListener,RefreshListener,OnItemClickListener,OnItemSelectedListener{
 
 	protected Spinner mSpinnerArr[];
 	protected DynamicListView mListView;
-	protected SpLVAdapter mAdapter;
+	protected Tv2VerAdapter mAdapter;
 
 	private int spinnerArr[];
 	private int listviewId;
@@ -36,6 +36,7 @@ public class BaseSpinnerListViewActivity extends BaseImmersionActivity implement
 		mSpinnerArr = new Spinner[spinnerArr.length];
 		for (int i = 0; i < mSpinnerArr.length; i++) {
 			mSpinnerArr[i] = (Spinner) findViewById(spinnerArr[i]);
+			mSpinnerArr[i].setId(i);
 			mSpinnerArr[i].setOnItemSelectedListener(this);
 		}
 

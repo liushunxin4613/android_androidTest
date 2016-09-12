@@ -1,12 +1,12 @@
 package activity;
 
-import base.activity.BaseImmersionActivity;
+import base.activity.BaseActionBarCenterActivity;
 
 /**
  * 扶贫项目管理
  * @author macos
  *
  */
-public class FupinProjectManageActivity extends BaseImmersionActivity {
+public class FupinProjectManageActivity extends BaseActionBarCenterActivity {
 
 }

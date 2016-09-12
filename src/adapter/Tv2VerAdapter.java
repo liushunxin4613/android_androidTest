@@ -11,12 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import base.adapter.BaseOrderlyAdapter;
-import util.data.ConfigUtil.ItemTv2VerConfig;
 
 public class Tv2VerAdapter extends BaseOrderlyAdapter<JSONObject> {
 
-	public Tv2VerAdapter(Context context, List<JSONObject> data, int resource) {
+	private int arrId[];
+	private String arr[];
+	private String KEY;
+	
+	public Tv2VerAdapter(Context context, List<JSONObject> data, int resource,int arrId[],String arr[],String KEY) {
 		super(context, data, resource);
+		this.arrId = arrId;
+		this.arr = arr;
+		this.KEY = KEY;
 	}
 
 	@Override
@@ -29,9 +35,9 @@ public class Tv2VerAdapter extends BaseOrderlyAdapter<JSONObject> {
 			view = inflater.inflate(resource, parent, false);
 			
 			holder = new ViewHolder();
-			holder.tvArr = new TextView[ItemTv2VerConfig.TV_ARR_ID.length];
+			holder.tvArr = new TextView[arrId.length];
 			for (int i = 0; i < holder.tvArr.length; i++) {
-				holder.tvArr[i] = (TextView) view.findViewById(ItemTv2VerConfig.TV_ARR_ID[i]);
+				holder.tvArr[i] = (TextView) view.findViewById(arrId[i]);
 			}
 			
 			view.setTag(holder);
@@ -41,7 +47,7 @@ public class Tv2VerAdapter extends BaseOrderlyAdapter<JSONObject> {
 		
 		for (int i = 0; i < holder.tvArr.length; i++) {
 			try {
-				holder.tvArr[i].setText(data.get(position).getString(ItemTv2VerConfig.TV_ARR[i]));
+				holder.tvArr[i].setText(data.get(position).getString(arr[i]));
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -58,7 +64,7 @@ public class Tv2VerAdapter extends BaseOrderlyAdapter<JSONObject> {
 	public boolean isContains(JSONObject obj) {
 		for (JSONObject map:data) {
 			try {
-				if (map.getString(ItemTv2VerConfig.KEY_ID).equals(obj.getString(ItemTv2VerConfig.KEY_ID))) {
+				if (map.getString(KEY).equals(obj.getString(KEY))) {
 					return true;
 				}
 			} catch (JSONException e) {

@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2013 readyState Software Ltd
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package util.ui;
 
 import java.lang.reflect.Method;
@@ -21,7 +37,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout.LayoutParams;
 
+/**
+ * Class to manage status and navigation bar tint effects when using KitKat 
+ * translucent system UI modes.
+ *
+ */
 public class SystemBarTintManager {
+
     static {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             try {
@@ -34,6 +56,7 @@ public class SystemBarTintManager {
             }
         }
     }
+
 
     public static final int DEFAULT_TINT_COLOR = 0x99000000;
 
@@ -362,7 +385,7 @@ public class SystemBarTintManager {
                 return 0;
             }
         }
-        
+
         public int getPixelInsetRight() {
             if (mTranslucentNavBar && !isNavigationAtBottom()) {
                 return mNavigationBarWidth;

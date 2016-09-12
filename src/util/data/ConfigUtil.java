@@ -20,7 +20,30 @@ public class ConfigUtil {
 				,R.string.ac_gridview_7
 		};
 	}
+	
+	/**
+	 * actionBar center参数
+	 * @author macos
+	 *
+	 */
+	public static class ActionBarCenterConfig{
+		public static int LAYOUT_ID = R.layout.actionbar_center;
+		public static int IMGBT_ID = R.id.ab_center_back;
+		public static int TITLE_ID = R.id.ab_center_title;
+	}
 
+	/**
+	 * actionBar three参数
+	 * @author macos
+	 *
+	 */
+	public static class ActionBarThreeConfig{
+		public static int LAYOUT_ID = R.layout.actionbar_three;
+		public static int IMGBT_FIND_ID = R.id.ab_three_find;
+		public static int IMGBT_LIST_ID = R.id.ab_three_list;
+		public static int TITLE_ID = R.id.ab_three_title;
+	}
+	
 	/**
 	 * 网络配置
 	 * @author macos
@@ -28,15 +51,25 @@ public class ConfigUtil {
 	 */
 	public static class HttpConfig{
 		public final static String WITH_URL = "http://";
-		public final static String IP_URL = WITH_URL + "192.168.1.198";
-		public final static String DOMAIN_URL = IP_URL + "/" + "v1";
-		public final static String BASE_INFO_URL = DOMAIN_URL+ "/" + "baseinfo";
-		public final static String NOTICE_LIST_URL = DOMAIN_URL+ "/" + "notice/list";
-		public final static String NOTICE_LIST_NEXT_URL = NOTICE_LIST_URL + "?page=";
-		public final static String NOTICE_DETAIL_WITH_URL = DOMAIN_URL+ "/" + "notice/";
-		public final static String NOTICE_DETAIL_END_URL = "/show";
-		public final static String MAP_DETAIL_URL = DOMAIN_URL+ "/" + "map";
-		public final static String USER_JSON_URI = IP_URL + ":" + "8000" + "/v1/user/login";
+		public final static String IP_URL = WITH_URL + "120.27.190.62:8000";
+		public final static String DOMAIN_URL = IP_URL + "/v1";
+		public final static String BASE_INFO_URL = DOMAIN_URL + "/baseinfo";
+		public final static String AREA_URL = DOMAIN_URL + "/area";
+		public final static String FAMILY_LIST_URL = DOMAIN_URL + "/family/list";
+		public final static String FAMILY_DETAIL_WITH_URL = DOMAIN_URL + "/family/";
+		public final static String NOTICE_LIST_URL = DOMAIN_URL + "/notice/list";
+		public final static String NOTICE_DETAIL_WITH_URL = DOMAIN_URL + "/notice/";
+		public final static String MAP_DETAIL_URL = DOMAIN_URL + "/map";
+		public final static String USER_JSON_URI = DOMAIN_URL + "user/login";
+		
+		public final static String NEWS_LIST_URL = DOMAIN_URL + "/news/list";
+		public final static String NEWS_DETAIL_WITH_URL = DOMAIN_URL + "/news/";
+		public final static String PROJECT_LIST_URL = DOMAIN_URL + "/project/list";
+		public final static String PROJECT_DETAIL_WITH_URL = DOMAIN_URL + "/project/";
+		
+		public final static String END_URL = "/show";
+		public final static String LIST_NEXT_URL = "?page=";
+		
 	}
 
 	/**
@@ -50,6 +83,13 @@ public class ConfigUtil {
 		public static int WEBVIEW_ID = R.id.ac_wv;
 	}
 
+	/**
+	 * FlashActivity 参数
+	 */
+	public static class FlashActivityConfig{
+		public static int LAYOUT_ID = R.layout.activity_flash;
+	}
+	
 	/**
 	 *MainActivity配置
 	 */
@@ -81,14 +121,15 @@ public class ConfigUtil {
 
 		//gridview icon
 		public static int GRIDVIEW_ICON_ARRID[] = {
-				R.drawable.icon_home_mall
-				,R.drawable.icon_home_part
-				,R.drawable.icon_home_second
-				,R.drawable.icon_home_more
-				,R.drawable.icon_home_more
-				,R.drawable.icon_home_second
-				,R.drawable.icon_home_part
-				,R.drawable.icon_home_mall
+				R.drawable.icon_baseinfo
+				,R.drawable.icon_map
+				,R.drawable.icon_fupin_data
+				,R.drawable.icon_fupin_project
+				,R.drawable.icon_fupin_check
+				,R.drawable.icon_tongji
+				,R.drawable.icon_notice
+				,R.drawable.icon_zhence
+				
 		};
 
 		//gridview icon text
@@ -105,14 +146,18 @@ public class ConfigUtil {
 
 		public static int NUM_COLUMNS = 2;
 
-		public static int ICON_WIDTH = 90;
+		public static int ICON_WIDTH = 80;
 
-		public static int REST_WIDTH = 160;
+		public static int REST_WIDTH = 50;
 
 		/**
 		 *  此值通过img的值计算img*2+40
 		 */
-		public static int MIN_WIDTH = 220;
+		public static int MIN_WIDTH = 160;
+		
+		public static int VIEW_LEFT = R.id.item_home_view_left;
+		public static int VIEW_BOTTOM = R.id.item_home_view_bottom;
+		
 	}
 
 	/**
@@ -157,24 +202,6 @@ public class ConfigUtil {
 	}
 
 	/**
-	 * item_tv_ver 配置
-	 * @author macos
-	 *
-	 */
-	public static class ItemTv2VerConfig{
-		public static int LAYOUT_ID = R.layout.item_tv2_ver;
-		public static int TV_ARR_ID[] = {
-				R.id.it_tv2_ver0
-				,R.id.it_tv2_ver1
-		};
-		public static String KEY_ID = "id";
-		public static String TV_ARR[] = {
-				"title"
-				,"inputtime"
-		};
-	}
-
-	/**
 	 * notice actvity 配置文件
 	 * @author macos
 	 *
@@ -182,9 +209,54 @@ public class ConfigUtil {
 	public static class NoticeActivityConfig{
 		public static int LAYOUT_ID = R.layout.activity_notice;
 		public static int LISTVIEW_ID = R.id.ac_notice_dylistview;
-		public static int ITEM_LAYOUT_ID = R.layout.item_tv2_ver;
+		public static int ITEM_LAYOUT_ID = R.layout.item_notice;
+		public static int ITEM_ARR_ID[] = {
+				R.id.item_notice0
+				,R.id.item_notice1
+				,R.id.item_notice2
+		};
+		public static String ITEM_ARR[] = {
+				"title"
+				,"inputtime"
+				,"type"
+		};
+		public static String KEY = "id";
 	}
 
+	/**
+	 * 扶贫大数据 actvity 配置文件
+	 * @author macos
+	 *
+	 */
+	public static class FupinDataActivityConfig{
+		public static int LAYOUT_ID = R.layout.activity_fupin_data;
+		public static int LISTVIEW_ID = R.id.splv_dylistview;
+		public static int ITEM_LAYOUT_ID = R.layout.item_user;
+		public static int ITEM_ARR_ID[] = {
+				R.id.item_user_name
+				,R.id.item_user_dizhi
+				,R.id.item_user_num
+				,R.id.item_user_state
+		};
+		public static String ITEM_ARR[] = {
+				"name"
+				,"address"
+				,"total_num"
+				,"property"
+		};
+		public static String KEY = "townid";
+	}
+	
+	/**
+	 * item spinner的配置参数
+	 * @author macos
+	 *
+	 */
+	public static class ItemSpinnerConfig{
+		public static int LAYOUT_ID = R.layout.item_spinner;
+		public static int TEXTVIEW_ID = R.id.item_sp_tv;
+	}
+	
 	/**
 	 * json解析参数
 	 * @author macos

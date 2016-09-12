@@ -1,9 +1,14 @@
 package util;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
 import android.util.Log;
+import util.entity.JsonUtil;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,14 +29,14 @@ public class VolleyUtil {
 
 	private RequestQueue mQueue;
 
-	private ResponseListener listener;
+	private OnResponseListener listener;
 	
 	/**
 	 * 消息标记
 	 */
 	public static int what;
 
-	public VolleyUtil(Context context,ResponseListener listener) {
+	public VolleyUtil(Context context,OnResponseListener listener) {
 		mQueue = Volley.newRequestQueue(context);
 		this.listener = listener;
 	}
@@ -42,7 +47,15 @@ public class VolleyUtil {
 			@Override
 			public void onResponse(JSONObject response) {
 				Log.i(TAG, response.toString());
-				listener.onJsonResponse(VolleyUtil.what,response);
+				List<JSONObject> data = new ArrayList<JSONObject>();
+				for (int i = 0; i < JsonUtil.getResult(response).length(); i++) {
+					try {
+						data.add(JsonUtil.getResult(response).getJSONObject(i));
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				listener.onListResponse(VolleyUtil.what,data);
 			}}, new Response.ErrorListener() {
 				@Override
 				public void onErrorResponse(VolleyError error) {
@@ -60,12 +73,12 @@ public class VolleyUtil {
 	 * @author macos
 	 *
 	 */
-	public interface ResponseListener {
+	public interface OnResponseListener {
 		/**
 		 * jsonobject数据
 		 * @param jsonObj
 		 */
-		void onJsonResponse(int what,JSONObject jsonObj);
+		void onListResponse(int what,List<JSONObject> data);
 	}
 	
 }

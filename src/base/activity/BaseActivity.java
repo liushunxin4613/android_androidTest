@@ -1,15 +1,16 @@
 package base.activity;
 
 import inter.AcFmInterface;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 public class BaseActivity extends Activity implements AcFmInterface{
-	
+
 	public static String TAG;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,7 +22,7 @@ public class BaseActivity extends Activity implements AcFmInterface{
 		initView();
 		initData();
 	}
-	
+
 
 	@Override
 	public void initRootView() {
@@ -39,7 +40,7 @@ public class BaseActivity extends Activity implements AcFmInterface{
 	@Override
 	public void initData() {
 	}
-	
+
 	public DisplayMetrics getDisplayMetrics(){
 		WindowManager wm = getWindowManager();
 		DisplayMetrics metrics = new DisplayMetrics();

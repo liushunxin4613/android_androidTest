@@ -1,6 +1,5 @@
 package activity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
@@ -11,24 +10,22 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import base.activity.BaseImmersionActivity;
+import base.activity.BaseActionBarCenterActivity;
 import customLib.DynamicListView;
 import customLib.DynamicListView.LoadMoreListener;
 import customLib.DynamicListView.RefreshListener;
 import util.VolleyUtil;
-import util.VolleyUtil.ResponseListener;
+import util.VolleyUtil.OnResponseListener;
 import util.data.ConfigUtil.HttpConfig;
-import util.data.ConfigUtil.ItemTv2VerConfig;
 import util.data.ConfigUtil.JsonDataConfig;
 import util.data.ConfigUtil.NoticeActivityConfig;
-import util.entity.NoticeJsonUtil;
 
 /**
  * 通知公告
  * @author macos
  *
  */
-public class NoticeAnnouncementActvity extends BaseImmersionActivity implements OnItemClickListener,RefreshListener,LoadMoreListener,ResponseListener{
+public class NoticeAnnouncementActvity extends BaseActionBarCenterActivity implements OnItemClickListener,RefreshListener,LoadMoreListener,OnResponseListener{
 
 	@Override
 	public int getRootViewId() {
@@ -61,18 +58,11 @@ public class NoticeAnnouncementActvity extends BaseImmersionActivity implements 
 	}
 
 	@Override
-	public void onJsonResponse(int what,JSONObject jsonObj) {
-		List<JSONObject> data = new ArrayList<JSONObject>();
-		for (int i = 0; i < NoticeJsonUtil.getResult(jsonObj).length(); i++) {
-			try {
-				data.add(NoticeJsonUtil.getResult(jsonObj).getJSONObject(i));
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
+	public void onListResponse(int what,List<JSONObject> data) {
 		switch (what) {
 		case INIT_WHAT://初始化数据
-			adapter = new Tv2VerAdapter(this, data, NoticeActivityConfig.ITEM_LAYOUT_ID);
+			adapter = new Tv2VerAdapter(this, data, NoticeActivityConfig.ITEM_LAYOUT_ID,
+					NoticeActivityConfig.ITEM_ARR_ID,NoticeActivityConfig.ITEM_ARR,NoticeActivityConfig.KEY);
 			listview.setAdapter(adapter);
 			break;
 		case REFRESH_WHAT://刷新数据
@@ -84,15 +74,15 @@ public class NoticeAnnouncementActvity extends BaseImmersionActivity implements 
 			listview.doneMore();
 			break;
 		}
-
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Intent intent = new Intent(this, NoticeDetailActivity.class);
 		try {
-			intent.putExtra(NoticeDetailActivity.KEY_ID, adapter.getItem(position-1).getString(ItemTv2VerConfig.KEY_ID));
-			intent.putExtra(NoticeDetailActivity.KEY_TITLE, adapter.getItem(position-1).getString(ItemTv2VerConfig.TV_ARR[0]));
+			//传参分开传,有利于分离重组
+			intent.putExtra(NoticeDetailActivity.KEY_ID, adapter.getItem(position-1).getString(NoticeActivityConfig.KEY));
+			intent.putExtra(NoticeDetailActivity.KEY_TITLE, adapter.getItem(position-1).getString(NoticeActivityConfig.ITEM_ARR[1]));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -111,7 +101,7 @@ public class NoticeAnnouncementActvity extends BaseImmersionActivity implements 
 	@Override
 	public boolean onLoadMore(DynamicListView dynamicListView) {
 		if (adapter.getCount() % JsonDataConfig.LIST_NUM == 0) {
-			util.setJSONObject(LOADMORE_WHAT, HttpConfig.NOTICE_LIST_NEXT_URL + (adapter.getCount() / JsonDataConfig.LIST_NUM + 1));
+			util.setJSONObject(LOADMORE_WHAT, HttpConfig.NOTICE_LIST_URL + HttpConfig.LIST_NEXT_URL + (adapter.getCount() / JsonDataConfig.LIST_NUM + 1));
 		}else {
 			listview.setOnMoreListener(null);
 			return true;

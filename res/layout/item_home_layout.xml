@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:gravity="center" >
+    android:gravity="center"
+    android:fitsSystemWindows="true" >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/pad_gridview"
         android:background="@drawable/home_item_selector" >
 
         <ImageView
@@ -26,6 +26,21 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:paddingBottom="@dimen/marigin_bottom_gridview" />
+
+        <View
+            android:id="@+id/item_home_view_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/line_gray" />
+        
+        <View
+            android:id="@+id/item_home_view_left"
+            android:layout_width="2px"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@color/line_gray" />
+        
     </RelativeLayout>
 
 </FrameLayout>

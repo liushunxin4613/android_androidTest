@@ -1,12 +1,12 @@
 package activity;
 
-import base.activity.BaseImmersionActivity;
+import base.activity.BaseActionBarCenterActivity;
 
 /**
  * ·öÆ¶¿¼ºË
  * @author macos
  *
  */
-public class FupinCheckActivity extends BaseImmersionActivity {
+public class FupinCheckActivity extends BaseActionBarCenterActivity {
 
 }

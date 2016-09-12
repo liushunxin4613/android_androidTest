@@ -2,6 +2,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <color name="immersionColor">#DD338BD7</color>
+    <color name="immersionColor_press">#48ADD7</color>
+    
     <color name="home_item_bg">#88E5F1F3</color>
     <color name="home_item_bg_press">#E5F1F3</color>
     <color name="home_setting_shadow">#1FFF</color>
@@ -44,11 +46,12 @@
       <!--      表示该区域不能修改 -->
     <color name="unedit_text_history">#E5E5E5</color>
     
-    
-    
     <color name="progress_color">#DD237BC7</color>
     <color name="seconderyProgress_color">#DD338BD7</color>
     
     <color name="theme">#e0000000</color>
+    
+    <color name="textview">#979797</color>
+    <color name="view_press">#ebebeb</color>
 
 </resources>

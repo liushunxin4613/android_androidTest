@@ -12,13 +12,22 @@ public abstract class BaseRootAdapter<T> extends BaseAdapter {
 	protected List<T> data;
 	protected Context context;
 	protected int resource;
-	
+
+	public BaseRootAdapter(Context context,List<T> data) {
+		this.data = data;
+		this.context = context;
+	}
+
 	public BaseRootAdapter(Context context,List<T> data,int resource) {
 		this.data = data;
 		this.context = context;
 		this.resource = resource;
 	}
-	
+
+	public void setData(List<T> data){
+		this.data = data;
+	}
+
 	@Override
 	public int getCount() {
 		return data.size();

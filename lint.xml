@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="ClickableViewAccessibility" severity="ignore" />
     <issue id="ContentDescription">
+        <ignore path="res/layout/actionbar_center.xml" />
         <ignore path="res/layout/activity_main.xml" />
+        <ignore path="res/layout/item_spinner.xml" />
+        <ignore path="res/layout/item_user.xml" />
     </issue>
-    <issue id="RtlHardcoded">
+    <issue id="OldTargetApi">
+        <ignore path="AndroidManifest.xml" />
+    </issue>
+    <issue id="PxUsage">
         <ignore path="res/layout/include_spinner_listview.xml" />
+        <ignore path="res/layout/item_home_layout.xml" />
+    </issue>
+    <issue id="ResourceAsColor">
+        <ignore path="src/base/activity/BaseActionBarCenterActivity.java" />
+        <ignore path="src/base/activity/BaseActionBarThreeActivity.java" />
+    </issue>
+    <issue id="RtlHardcoded" severity="ignore">
+        <ignore path="res/layout/actionbar_center.xml" />
+        <ignore path="res/layout/actionbar_three.xml" />
+        <ignore path="res/layout/include_spinner_listview.xml" />
+        <ignore path="res/layout/item_home_layout.xml" />
         <ignore path="res/layout/item_textview.xml" />
+    </issue>
+    <issue id="UseCompoundDrawables">
+        <ignore path="res/layout/item_user.xml" />
     </issue>
     <issue id="UselessParent">
         <ignore path="res/layout/include_spinner_listview.xml" />

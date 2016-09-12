@@ -2,7 +2,6 @@
     android:id="@+id/ac_scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clipToPadding="true"
     android:fitsSystemWindows="true"
     android:scrollbars="none" >
 
@@ -15,15 +14,14 @@
             android:id="@+id/ac_main_iv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/item_01" />
+            android:background="@drawable/zhuxi05" />
 
         <customLib.ExpandGridView
             android:id="@+id/ac_main_gridView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:numColumns="2"
-            android:padding="@dimen/pad_gridview" >
+            android:numColumns="2" >
         </customLib.ExpandGridView>
     </LinearLayout>
 
