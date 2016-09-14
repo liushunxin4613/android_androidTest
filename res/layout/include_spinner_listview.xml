@@ -17,7 +17,6 @@
             android:id="@+id/splv_sp0"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/view_margin_small"
             android:layout_weight="1"
             android:background="@null" />
 
@@ -30,7 +29,6 @@
             android:id="@+id/splv_sp1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/view_margin_small"
             android:layout_weight="1"
             android:background="@null" />
 
@@ -43,7 +41,6 @@
             android:id="@+id/splv_sp2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/view_margin_small"
             android:layout_weight="1"
             android:background="@null" />
     </LinearLayout>
@@ -54,11 +51,11 @@
         android:layout_height="match_parent"
         android:background="@color/view_press"
         android:divider="@null"
+        android:drawSelectorOnTop="true"
         android:dividerHeight="@dimen/view_margin_small"
         android:paddingLeft="@dimen/view_margin_small"
         android:paddingRight="@dimen/view_margin_small"
         android:scrollbars="none" >
-
     </customLib.DynamicListView>
-
+    
 </LinearLayout>

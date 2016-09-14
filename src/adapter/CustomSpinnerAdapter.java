@@ -48,7 +48,8 @@ public class CustomSpinnerAdapter extends BaseRootAdapter<String> implements Spi
 		TextView textView = new TextView(context);
 		textView.setText(data.get(position));
 		textView.setGravity(Gravity.CENTER);
-		textView.setPadding(5, 5, 5, 5);
+		textView.setTextSize(16);
+		textView.setPadding(10, 10, 10, 10);
 		return textView;
 	}
 

@@ -63,7 +63,9 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 		mSpinnerArr[2].setAdapter(new CustomSpinnerAdapter(this, Arrays.asList(ss), resource, textviewId));
 		
 		util = new VolleyUtil(this, this);
+		
 		util.setJSONObject(SPINNER_WHAT, HttpConfig.AREA_URL);//获取区县信息
+		util.setDialogDismissCheck(true);//此次不消除
 		
 	}
 
@@ -100,6 +102,7 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 			mSpinnerArr[1].setAdapter(new CustomSpinnerAdapter(this, getCunList(0), resource, textviewId));
 			
 			util.setJSONObject(INIT_WHAT, HttpConfig.FAMILY_LIST_URL);//获取初始数据
+			
 			break;
 		case INIT_WHAT://初始化数据
 			mAdapter = new Tv2VerAdapter(this, data, FupinDataActivityConfig.ITEM_LAYOUT_ID,

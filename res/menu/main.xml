@@ -3,7 +3,7 @@
     tools:context="com.leo.androidtest.MainActivity" >
 
     <item
-        android:icon="@drawable/ic_menu"
+        android:icon="@drawable/chilun2"
         android:orderInCategory="100"
         android:showAsAction="always"
         android:title="@string/action_setting">

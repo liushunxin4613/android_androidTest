@@ -7,9 +7,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
 import base.adapter.BaseRootAdapter;
 import util.data.ConfigUtil.GridViewConfig;
+import android.widget.AbsListView.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,19 +17,17 @@ public class GridViewAdapter extends BaseRootAdapter<Map<String, Integer>> {
 
 	private int fromArrId[];
 	private String toArr[];
-
-	private int num = 2;
-	private int minWidth = 200;
-
-	public void setParameter(int num,int minWidth){
-		this.num = num;
-		this.minWidth = minWidth;
-	}
+	
+	private int num = 1;
 
 	public GridViewAdapter(Context context, List<Map<String, Integer>> data, int resource,int fromArrId[],String toArr[]) {
 		super(context, data, resource);
 		this.fromArrId = fromArrId;
 		this.toArr = toArr;
+	}
+	
+	public void setNumColumns(int num){
+		this.num = num;
 	}
 
 	@Override
@@ -51,13 +49,9 @@ public class GridViewAdapter extends BaseRootAdapter<Map<String, Integer>> {
 
 		holder.img.setBackgroundResource(data.get(position).get(toArr[0]));
 		holder.tv.setText(data.get(position).get(toArr[1]));
-
+		
 		int width = parent.getWidth()/num;
-		if(minWidth > GridViewConfig.MIN_WIDTH){
-			view.setLayoutParams(new LayoutParams(width, minWidth));
-		}else {
-			view.setLayoutParams(new LayoutParams(width, GridViewConfig.MIN_WIDTH));
-		}
+		view.setLayoutParams(new LayoutParams(width, LayoutParams.WRAP_CONTENT));
 
 		View leftView = view.findViewById(GridViewConfig.VIEW_LEFT);
 		View bottomView = view.findViewById(GridViewConfig.VIEW_BOTTOM);
@@ -66,12 +60,16 @@ public class GridViewAdapter extends BaseRootAdapter<Map<String, Integer>> {
 		int index = position + 1;
 		if (index % num == 1) {
 			leftView.setVisibility(View.GONE);
+		}else {
+			leftView.setVisibility(View.VISIBLE);
 		}
 		int a = data.size() % num;
 		int b = data.size() / num;
 		if (a == 0) b--;
 		if (index > b * num) {
 			bottomView.setVisibility(View.GONE);
+		}else {
+			bottomView.setVisibility(View.VISIBLE);
 		}
 
 		return view;

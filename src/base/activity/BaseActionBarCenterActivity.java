@@ -3,12 +3,15 @@ package base.activity;
 import com.leo.androidtest.R;
 import android.app.ActionBar;
 import android.text.TextPaint;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.AbsListView.LayoutParams;
 import util.data.ConfigUtil.ActionBarCenterConfig;
 
 public class BaseActionBarCenterActivity extends BaseImmersionActivity {
@@ -26,6 +29,22 @@ public class BaseActionBarCenterActivity extends BaseImmersionActivity {
 		if (actionBar == null) {
 			return false;
 		}
+		actionBarViewCenter(actionBar);
+//		actionBarCenter(actionBar);
+		return true;
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		switch (id) {
+		case android.R.id.home:
+			onBackPressed();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	public void actionBarViewCenter(ActionBar actionBar){
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(ActionBarCenterConfig.LAYOUT_ID);
 		title = (TextView) actionBar.getCustomView().findViewById(ActionBarCenterConfig.TITLE_ID);
@@ -52,11 +71,31 @@ public class BaseActionBarCenterActivity extends BaseImmersionActivity {
 				return false;    
 			}
 		});
-		return true;
 	}
 	
 	protected void setTitle(String title){
 		this.title.setText(title);
+	}
+	
+	public void actionBarCenter(ActionBar actionBar){
+		actionBar.setDisplayShowCustomEnabled(true);
+		actionBar.setDisplayOptions(
+				ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_TITLE,
+				ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_TITLE);  
+
+		title = new TextView(this);
+		title.setTextColor(getResources().getColor(R.color.white));
+		title.setTextSize(20);
+		title.setText(getTitle().toString());
+		TextPaint paint = title.getPaint(); //…Ë÷√º”¥÷
+		paint.setFakeBoldText(true);
+		title.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
+		title.setGravity(Gravity.CENTER);
+
+		actionBar.setCustomView(title, new ActionBar.LayoutParams(
+				ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT, Gravity.CENTER));
+
+		actionBar.setDisplayShowTitleEnabled(false);
 	}
 
 }

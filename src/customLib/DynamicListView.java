@@ -105,7 +105,6 @@ public class DynamicListView extends ListView implements OnScrollListener {
 			initThis(context);
 		}
 
-		@SuppressWarnings("deprecation")
 		private void initThis(Context context) {
 			this.setOrientation(LinearLayout.HORIZONTAL);
 			this.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);

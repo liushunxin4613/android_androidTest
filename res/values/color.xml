@@ -29,7 +29,7 @@
     <color name="dialog_bottom_bg">#F0F8F8F8</color>
     
     <color name="white">#FFFFFF</color>
-    <color name="white_transparent">#D0FFFFFF</color>
+    <color name="white_transparent">#F6F6F6</color>
     
     <color name="text_gray">#909090</color>
     <color name="text_blue">#58BDE7</color>

@@ -11,7 +11,6 @@ import android.view.WindowManager;
  * 状态栏相关工具类
  *
  */
-@SuppressWarnings("deprecation")
 @SuppressLint("NewApi")
 public class StatusBarUtils {
 

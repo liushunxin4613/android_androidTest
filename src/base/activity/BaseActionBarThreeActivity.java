@@ -15,8 +15,8 @@ import util.data.ConfigUtil.ActionBarThreeConfig;
 public class BaseActionBarThreeActivity extends BaseImmersionActivity implements OnClickListener{
 	
 	protected LinearLayout lyList,lyFind;
-	protected int LYLIST_ID = 0;
-	protected int LYFIND_ID = 0;
+	protected final int LYLIST_ID = 0;
+	protected final int LYFIND_ID = 1;
 	
 	@Override
 	public void initView() {

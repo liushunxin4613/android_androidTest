@@ -68,7 +68,6 @@ public class BaseImmersionActivity extends BaseActivity {
 		this.getWindow().setBackgroundDrawable(drawable);
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void initView() {
 		KitKatUtils.setStatusBar(this, isLight);

@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.view.WindowManager;
 import base.activity.BaseActivity;
 import util.data.ConfigUtil.FlashActivityConfig;
+import util.delete.TimerUtil;
+import util.delete.TimerUtil.OnTime;;
 
-public class FlashActivity extends BaseActivity implements OnSysTime{
+public class FlashActivity extends BaseActivity implements OnTime{
 
 	@Override
 	public int getRootViewId() {
@@ -17,42 +19,12 @@ public class FlashActivity extends BaseActivity implements OnSysTime{
 
 	@Override
 	public void initData() {
-		SysTime sys = new SysTime(this,1);
-		sys.onTime();
+		new TimerUtil(this).start();
 	}
-
-
-	class SysTime{
-		private OnSysTime onSysTime;
-		private int time;
-		public SysTime(OnSysTime onSysTime,int time) {
-			this.onSysTime = onSysTime;
-			this.time = time;
-		}
-		public void onTime(){
-			new Thread(new Runnable() {
-				@Override
-				public void run() {
-					try {
-						Thread.sleep(time*1000);
-						onSysTime.sysTime();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}).start();
-		}
-	}
-
-
+	
 	@Override
-	public void sysTime() {
+	public void onTime() {
 		startActivity(new Intent(this, MainActivity.class));
-		super.finish();
+		finish();
 	}
-
 }
-
-interface OnSysTime{
-	void sysTime();
-};

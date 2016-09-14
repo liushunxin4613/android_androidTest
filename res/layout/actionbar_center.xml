@@ -18,8 +18,12 @@
         android:layout_height="match_parent"
         android:clickable="true"
         android:gravity="left|center_vertical"
-        android:padding="@dimen/view_margin_12">
+        android:paddingTop="@dimen/view_margin_12"
+        android:paddingBottom="@dimen/view_margin_12">
         <ImageView
+            android:alpha="0.8"
+            android:layout_marginLeft="@dimen/view_margin_12"
+            android:layout_marginRight="@dimen/view_margin_12"
             android:src="@drawable/back_arrow1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

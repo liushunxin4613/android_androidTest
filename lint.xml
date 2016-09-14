@@ -3,6 +3,7 @@
     <issue id="ClickableViewAccessibility" severity="ignore" />
     <issue id="ContentDescription">
         <ignore path="res/layout/actionbar_center.xml" />
+        <ignore path="res/layout/actionbar_three.xml" />
         <ignore path="res/layout/activity_main.xml" />
         <ignore path="res/layout/item_spinner.xml" />
         <ignore path="res/layout/item_user.xml" />
@@ -10,8 +11,12 @@
     <issue id="OldTargetApi">
         <ignore path="AndroidManifest.xml" />
     </issue>
+    <issue id="Orientation">
+        <ignore path="res/layout/item_home_layout.xml" />
+    </issue>
     <issue id="PxUsage">
         <ignore path="res/layout/include_spinner_listview.xml" />
+        <ignore path="res/layout/item_gridview.xml" />
         <ignore path="res/layout/item_home_layout.xml" />
     </issue>
     <issue id="ResourceAsColor">
@@ -25,7 +30,12 @@
         <ignore path="res/layout/item_home_layout.xml" />
         <ignore path="res/layout/item_textview.xml" />
     </issue>
-    <issue id="UseCompoundDrawables">
+    <issue id="RtlSymmetry">
+        <ignore path="res/layout/item_spinner.xml" />
+    </issue>
+    <issue id="UseCompoundDrawables" severity="ignore">
+        <ignore path="res/layout/item_home_layout.xml" />
+        <ignore path="res/layout/item_spinner.xml" />
         <ignore path="res/layout/item_user.xml" />
     </issue>
     <issue id="UselessParent">

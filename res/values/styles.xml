@@ -111,5 +111,18 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
+    
+    <!-- Loading Dialog Theme -->
+    <style name="MyDialogTheme.Loading" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/MyAnimation.Dialog.Loading</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    
+    <style name="MyAnimation.Dialog.Loading" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_center_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_center_out</item>
+    </style>
 
 </resources>

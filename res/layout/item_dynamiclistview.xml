@@ -6,12 +6,13 @@
     android:orientation="vertical" >
 
     <customLib.DynamicListView
-        android:id="@+id/ac_notice_dylistview"
+        android:id="@+id/item_dylistview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/view_press"
         android:divider="@null"
         android:dividerHeight="@dimen/view_margin_small"
+        android:drawSelectorOnTop="true"
         android:paddingLeft="@dimen/view_margin_small"
         android:paddingRight="@dimen/view_margin_small"
         android:scrollbars="none" >

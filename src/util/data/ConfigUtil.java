@@ -45,13 +45,26 @@ public class ConfigUtil {
 	}
 	
 	/**
+	 * actionBar title center参数
+	 * @author macos
+	 *
+	 */
+	public static class ActionBarTitleCenterConfig{
+		public static int LAYOUT_ID = R.layout.actionbar_title_center;
+		public static int TITLE_ID = R.id.ab_title_center_tv;
+	}
+	
+	/**
 	 * 网络配置
 	 * @author macos
 	 *
 	 */
 	public static class HttpConfig{
+		
+		public final static String IP_ADD = "120.27.190.62:8000";
+		public final static String IP_ADD1 = "192.168.1.198:90";
 		public final static String WITH_URL = "http://";
-		public final static String IP_URL = WITH_URL + "120.27.190.62:8000";
+		public final static String IP_URL = WITH_URL + IP_ADD;
 		public final static String DOMAIN_URL = IP_URL + "/v1";
 		public final static String BASE_INFO_URL = DOMAIN_URL + "/baseinfo";
 		public final static String AREA_URL = DOMAIN_URL + "/area";
@@ -69,6 +82,7 @@ public class ConfigUtil {
 		
 		public final static String END_URL = "/show";
 		public final static String LIST_NEXT_URL = "?page=";
+		public final static String CALLBACK_JSON = "?callback=json";
 		
 	}
 
@@ -106,13 +120,14 @@ public class ConfigUtil {
 	 */
 	public static class GridViewConfig{
 		public static int SCROLLVIEW_LAYOUT_ID = R.id.ac_scrollview;
+		
 		//GridView
 		public static int GRIDVIEW_ID = R.id.ac_main_gridView;
-		public static int GRIDVIEW_LAYOUT_ID = R.layout.item_home_layout;
+		public static int GRIDVIEW_LAYOUT_ID = R.layout.item_gridview;
 
 		public static int GRIDVIEW_FROM_ARRID[] = {
-				R.id.item_home_image
-				,R.id.item_home_text
+				R.id.item_image
+				,R.id.item_text
 		};
 		public static String GRIDVIEW_TO_ARRID[] = {
 				"img"
@@ -129,7 +144,6 @@ public class ConfigUtil {
 				,R.drawable.icon_tongji
 				,R.drawable.icon_notice
 				,R.drawable.icon_zhence
-				
 		};
 
 		//gridview icon text
@@ -153,10 +167,10 @@ public class ConfigUtil {
 		/**
 		 *  此值通过img的值计算img*2+40
 		 */
-		public static int MIN_WIDTH = 160;
+		public static int MIN_WIDTH = 320;
 		
-		public static int VIEW_LEFT = R.id.item_home_view_left;
-		public static int VIEW_BOTTOM = R.id.item_home_view_bottom;
+		public static int VIEW_LEFT = R.id.item_view_left;
+		public static int VIEW_BOTTOM = R.id.item_view_bottom;
 		
 	}
 
@@ -207,8 +221,6 @@ public class ConfigUtil {
 	 *
 	 */
 	public static class NoticeActivityConfig{
-		public static int LAYOUT_ID = R.layout.activity_notice;
-		public static int LISTVIEW_ID = R.id.ac_notice_dylistview;
 		public static int ITEM_LAYOUT_ID = R.layout.item_notice;
 		public static int ITEM_ARR_ID[] = {
 				R.id.item_notice0
@@ -244,7 +256,7 @@ public class ConfigUtil {
 				,"total_num"
 				,"property"
 		};
-		public static String KEY = "townid";
+		public static String KEY = "id";
 	}
 	
 	/**
@@ -255,6 +267,16 @@ public class ConfigUtil {
 	public static class ItemSpinnerConfig{
 		public static int LAYOUT_ID = R.layout.item_spinner;
 		public static int TEXTVIEW_ID = R.id.item_sp_tv;
+	}
+	
+	/**
+	 * item Dynamiclistview的配置参数
+	 * @author macos
+	 *
+	 */
+	public static class ItemDynamiclistviewConfig{
+		public static int LAYOUT_ID = R.layout.item_dynamiclistview;
+		public static int LISTVIEW_ID = R.id.item_dylistview;
 	}
 	
 	/**
@@ -270,6 +292,45 @@ public class ConfigUtil {
 				,"list"
 		};
 	}
-
+	
+	/**
+	 * 政策资讯参数
+	 * @author macos
+	 *
+	 */
+	public static class PolicyActivityConfig{
+		public static int ITEM_LAYOUT_ID = R.layout.item_notice;
+		public static int ITEM_ARR_ID[] = {
+				R.id.item_notice0
+				,R.id.item_notice1
+				,R.id.item_notice2
+		};
+		public static String ITEM_ARR[] = {
+				"title"
+				,"inputtime"
+				,"type"
+		};
+		public static String KEY = "id";
+	}
+	
+	/**
+	 * 政策资讯参数
+	 * @author macos
+	 *
+	 */
+	public static class FupinProjectActivityConfig{
+		public static int ITEM_LAYOUT_ID = R.layout.item_notice;
+		public static int ITEM_ARR_ID[] = {
+				R.id.item_notice0
+				,R.id.item_notice1
+				,R.id.item_notice2
+		};
+		public static String ITEM_ARR[] = {
+				"title"
+				,"status"
+				,"type"
+		};
+		public static String KEY = "id";
+	}
 
 }
