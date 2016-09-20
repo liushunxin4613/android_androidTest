@@ -11,10 +11,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import customLib.DynamicListView;
 import customLib.DynamicListView.LoadMoreListener;
 import customLib.DynamicListView.RefreshListener;
-import util.VolleyUtil.OnResponseListener;
+import util.VolleyUtil.OnVolleyResponseListener;
 import util.data.ConfigUtil.ItemDynamiclistviewConfig;
 
-public class BaseDynamiclistviewActivity extends BaseActionBarCenterActivity implements OnItemClickListener,RefreshListener,LoadMoreListener,OnResponseListener{
+public class BaseDynamiclistviewActivity extends BaseActionBarCenterActivity implements OnItemClickListener,RefreshListener,LoadMoreListener,OnVolleyResponseListener{
 
 	@Override
 	public int getRootViewId() {

@@ -25,7 +25,8 @@ public class PolicyMessageActivity extends BaseDynamiclistviewActivity{
 	
 	@Override
 	public void initData() {
-		util = new VolleyUtil(this,this);
+		util = new VolleyUtil(this);
+		util.setResponseListener(this);
 		util.setJSONObject(INIT_WHAT,HttpConfig.NEWS_LIST_URL + HttpConfig.CALLBACK_JSON);
 	}
 

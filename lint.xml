@@ -23,6 +23,9 @@
         <ignore path="src/base/activity/BaseActionBarCenterActivity.java" />
         <ignore path="src/base/activity/BaseActionBarThreeActivity.java" />
     </issue>
+    <issue id="RtlEnabled">
+        <ignore path="AndroidManifest.xml" />
+    </issue>
     <issue id="RtlHardcoded" severity="ignore">
         <ignore path="res/layout/actionbar_center.xml" />
         <ignore path="res/layout/actionbar_three.xml" />
@@ -37,6 +40,9 @@
         <ignore path="res/layout/item_home_layout.xml" />
         <ignore path="res/layout/item_spinner.xml" />
         <ignore path="res/layout/item_user.xml" />
+    </issue>
+    <issue id="UselessLeaf">
+        <ignore path="res/layout/activity_login.xml" />
     </issue>
     <issue id="UselessParent">
         <ignore path="res/layout/include_spinner_listview.xml" />

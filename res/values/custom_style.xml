@@ -228,5 +228,21 @@
         <item name="android:paddingRight">5dp</item>
         <item name="android:layout_gravity">center_vertical</item>
     </style>
+    
+    <style name="title_bold_textstyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="title_big_textstyle">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="button_textstyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/immersionColor</item>
+    </style>
 
 </resources>

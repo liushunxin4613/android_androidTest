@@ -49,5 +49,12 @@
     <string name="tv_3">住址</string>
     <string name="tv_with">成员: </string>
     <string name="tv_end">人</string>
+    
+    <!-- 用户登录 -->
+    <string name="login_title">用户登录</string>
+    <string name="login_in0">精准扶贫大数据中心</string>
+    <string name="login_eth0">手机号/用户名</string>
+    <string name="login_eth1">请输入密码</string>
+    <string name="login_toa0">登录失败</string>
 
 </resources>

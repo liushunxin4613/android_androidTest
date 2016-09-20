@@ -46,10 +46,13 @@ public abstract class BaseWebViewActivity extends BaseActionBarCenterActivity {
 			webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		}
 
-
-		if (Build.VERSION.SDK_INT >= 19) {
-			settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);// 优先使用缓存
-		}
+		settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+		
+		settings.setDomStorageEnabled(true);
+		
+//		if (Build.VERSION.SDK_INT >= 19) {
+//			settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);// 优先使用缓存
+//		}
 
 		webView.setWebViewClient(new BaseWebViewClient(this));
 

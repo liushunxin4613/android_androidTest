@@ -31,6 +31,7 @@ import customLib.ExpandGridView;
 import util.data.ConfigUtil.GridViewConfig;
 import util.data.ConfigUtil.HttpConfig;
 import util.data.ConfigUtil.MainActivityConfig;
+import util.data.DataUtil;
 
 public class MainActivity extends BaseActionBarTitleCenterActivity implements OnItemClickListener{
 
@@ -49,10 +50,11 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.setting0://账户信息
-
+			
 			break;
 		case R.id.setting1://退出登录
-
+			DataUtil.cleanInfo(this);//清除数据
+			super.onBackPressed();
 			break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -136,6 +138,11 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 			intent.setClass(this, WebActivity.class);
 			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_3));
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.PROJECT_LIST_URL);
+			break;
+		case 5://StatisticsAnalyze
+			intent.setClass(this, WebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_5));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.ANALYSIS_URL);
 			break;
 		case 6://Notice
 			intent.setClass(this, WebActivity.class);

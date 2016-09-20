@@ -11,14 +11,14 @@ public class TimerUtil {
 		this.onTime = onTime;
 	}
 
-	public void start(){
+	public void start(final int time){
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
 				onTime.onTime();
 			}
-		}, 2000);
+		}, time);
 	}
 
 	public interface OnTime{

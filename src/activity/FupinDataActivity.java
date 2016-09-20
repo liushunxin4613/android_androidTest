@@ -18,7 +18,7 @@ import base.activity.BaseSpinnerListViewActivity;
 import customLib.DynamicListView;
 import entity.Find;
 import util.VolleyUtil;
-import util.VolleyUtil.OnResponseListener;
+import util.VolleyUtil.OnVolleyResponseListener;
 import util.data.ConfigUtil.FupinDataActivityConfig;
 import util.data.ConfigUtil.HttpConfig;
 import util.data.ConfigUtil.ItemSpinnerConfig;
@@ -30,7 +30,7 @@ import util.data.ConfigUtil.SpinnerListViewConfig;
  * @author macos
  *
  */
-public class FupinDataActivity extends BaseSpinnerListViewActivity implements OnResponseListener{
+public class FupinDataActivity extends BaseSpinnerListViewActivity implements OnVolleyResponseListener{
 
 	@Override
 	public int getRootViewId() {
@@ -62,7 +62,8 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 		
 		mSpinnerArr[2].setAdapter(new CustomSpinnerAdapter(this, Arrays.asList(ss), resource, textviewId));
 		
-		util = new VolleyUtil(this, this);
+		util = new VolleyUtil(this);
+		util.setResponseListener(this);
 		
 		util.setJSONObject(SPINNER_WHAT, HttpConfig.AREA_URL);//获取区县信息
 		util.setDialogDismissCheck(true);//此次不消除

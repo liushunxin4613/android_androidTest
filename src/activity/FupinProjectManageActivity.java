@@ -15,7 +15,7 @@ import customLib.DynamicListView;
 import customLib.DynamicListView.LoadMoreListener;
 import customLib.DynamicListView.RefreshListener;
 import util.VolleyUtil;
-import util.VolleyUtil.OnResponseListener;
+import util.VolleyUtil.OnVolleyResponseListener;
 import util.data.ConfigUtil.FupinProjectActivityConfig;
 import util.data.ConfigUtil.HttpConfig;
 import util.data.ConfigUtil.JsonDataConfig;
@@ -25,13 +25,14 @@ import util.data.ConfigUtil.JsonDataConfig;
  * @author macos
  *
  */
-public class FupinProjectManageActivity extends BaseDynamiclistviewActivity implements OnItemClickListener,RefreshListener,LoadMoreListener,OnResponseListener{
+public class FupinProjectManageActivity extends BaseDynamiclistviewActivity implements OnItemClickListener,RefreshListener,LoadMoreListener,OnVolleyResponseListener{
 
 	private VolleyUtil util;
 	
 	@Override
 	public void initData() {
-		util = new VolleyUtil(this,this);
+		util = new VolleyUtil(this);
+		util.setResponseListener(this);
 		util.setJSONObject(INIT_WHAT,HttpConfig.PROJECT_LIST_URL + HttpConfig.CALLBACK_JSON);
 	}
 

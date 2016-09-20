@@ -9,4 +9,6 @@ import base.activity.BaseActionBarCenterActivity;
  */
 public class StatisticsAnalyzeActivity extends BaseActionBarCenterActivity {
 
+	
+	
 }

@@ -26,7 +26,7 @@ public class FupinCheckActivity extends BaseActionBarCenterActivity {
 			public void onTime() {
 				factory.dismissDialogDefault();
 			}
-		}).start();
+		}).start(2000);
 
 	}
 
