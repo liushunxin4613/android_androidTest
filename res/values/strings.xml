@@ -56,5 +56,7 @@
     <string name="login_eth0">手机号/用户名</string>
     <string name="login_eth1">请输入密码</string>
     <string name="login_toa0">登录失败</string>
+    <string name="login_toa1">登录成功</string>
+    <string name="login_toa2">网络超时</string>
 
 </resources>

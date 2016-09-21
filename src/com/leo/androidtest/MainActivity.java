@@ -119,6 +119,16 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 
 	}
 
+	@Override
+	public void initData() {
+		//启动服务队列
+		//启动地址服务
+		Intent intent = new Intent(MainActivity.this, InitService.class);
+		intent.putExtra(InitService.KEY_START_SERVICE_FOR, InitService.TASK_ADDRESS);
+		startService(intent);
+	}
+	
+	
 	private Class<?> activityClassArr[] = {
 			BaseInfoActvity.class
 			,MapWebViewActivity.class

@@ -62,8 +62,9 @@ public final class ConfigUtil {
 	public static final class HttpConfig{
 		public static final String IP_ADD = "120.27.190.62:8000";
 		public static final String IP_ADD1 = "192.168.1.198:90";
+		public static final String IP_ADD2 = "www.momo55.com:8000";
 		public static final String WITH_URL = "http://";
-		public static final String IP_URL = WITH_URL + IP_ADD;
+		public static final String IP_URL = WITH_URL + IP_ADD2;
 		public static final String DOMAIN_URL = IP_URL + "/v1";
 		public static final String BASE_INFO_URL = DOMAIN_URL + "/baseinfo";
 		public static final String AREA_URL = DOMAIN_URL + "/area";
@@ -99,7 +100,11 @@ public final class ConfigUtil {
 				"username"
 				,"token"
 		};
-		
+		public static final String ADDRESS_STRING = "address";
+		public static final String TYPE_STRING = "type";
+		public static final String NAME = "name";
+		public static final String ID = "id";
+		public static final String LIST = "list";
 	}
 	
 	/**
@@ -303,11 +308,13 @@ public final class ConfigUtil {
 	public static final class JsonDataConfig{
 		public static final int LIST_NUM = 20;
 		public static final int RETCODE_SUCCESS = 200;
+		public static final String INDEX_RETCODE = "retcode";
 		public static final String ROOT_JSON_KEY_ARR[] = {
 				"retcode"
 				,"list"
 				,"msg"
 				,"info"
+				,"family_type"
 		};
 	}
 	

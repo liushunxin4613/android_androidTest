@@ -86,22 +86,23 @@ public class LoginActivity extends BaseImmersionActivity implements OnClickListe
 		switch (post) {
 		case VolleyUtil.POST_SUCCESS:
 			JSONObject jso = (JSONObject) obj;
-			Map<String, String> map;
+			Map<String, Object> map;
 			try {
-				map = new HashMap<String, String>();
+				map = new HashMap<String, Object>();
 				map.put("uid", jso.getString("uid"));
 				map.put("username", jso.getString("username"));
 				map.put("roles", jso.getString("roles"));
 				map.put("token", jso.getString("token"));
 				
 				DataUtil.saveMapInfo(this, DataUtil.ROOT_SHAREPREFERENCE_USER_INFO, map);//´æ´¢µÇÂ¼ÐÅÏ¢
+				Toast.makeText(this, R.string.login_toa1, Toast.LENGTH_SHORT).show();
 				startActivity(new Intent(this, MainActivity.class));
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 			break;
 		case VolleyUtil.POST_ERROR:
-			Toast.makeText(this, R.string.login_toa0, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.login_toa0, Toast.LENGTH_SHORT).show();
 			break;
 		}
 		

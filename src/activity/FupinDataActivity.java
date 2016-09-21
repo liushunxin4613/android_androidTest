@@ -1,7 +1,6 @@
 package activity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -11,7 +10,6 @@ import org.json.JSONObject;
 import adapter.CustomSpinnerAdapter;
 import adapter.Tv2VerAdapter;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import base.activity.BaseSpinnerListViewActivity;
@@ -19,10 +17,12 @@ import customLib.DynamicListView;
 import entity.Find;
 import util.VolleyUtil;
 import util.VolleyUtil.OnVolleyResponseListener;
+import util.data.DataUtil;
 import util.data.ConfigUtil.FupinDataActivityConfig;
 import util.data.ConfigUtil.HttpConfig;
 import util.data.ConfigUtil.ItemSpinnerConfig;
 import util.data.ConfigUtil.JsonDataConfig;
+import util.data.ConfigUtil.KeyConfig;
 import util.data.ConfigUtil.SpinnerListViewConfig;
 
 /**
@@ -43,10 +43,7 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 		super.initView();
 	}
 
-	private String ss[] = new String[]{"绝对贫困农户","一般贫困农户"};
-	
 	private VolleyUtil util;
-	private final int SPINNER_WHAT = 3;
 	private final int INIT_WHAT = 0;
 	private final int REFRESH_WHAT = 1;
 	private final int LOADMORE_WHAT = 2;
@@ -59,52 +56,114 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 		//设置初始参数
 		resource = ItemSpinnerConfig.LAYOUT_ID;
 		textviewId = ItemSpinnerConfig.TEXTVIEW_ID;
-		
-		mSpinnerArr[2].setAdapter(new CustomSpinnerAdapter(this, Arrays.asList(ss), resource, textviewId));
+		initAddress();
 		
 		util = new VolleyUtil(this);
 		util.setResponseListener(this);
-		
-		util.setJSONObject(SPINNER_WHAT, HttpConfig.AREA_URL);//获取区县信息
-		util.setDialogDismissCheck(true);//此次不消除
+		util.setJSONObject(INIT_WHAT, HttpConfig.FAMILY_LIST_URL);//获取初始数据
 		
 	}
 
-	private List<String> zhenList;
-	private List<String> cunList;
-	private List<Find> findList;
-	private List<JSONObject> addData;
+	private JSONArray addressArray;
+	private List<Find> typeList;
+	private List<Find> zhenList;
+	private List<Find> cunList;
+	
+	/**
+	 * 提取村镇信息
+	 */
+	private void initAddress(){
+		initZhenSpinner();
+		initCunSpinner();
+		initTypeSpinner();
+	}
+	
+	/**
+	 * 初始化类型下拉框信息
+	 */
+	private void initTypeSpinner() {
+		try {
+			typeList = new ArrayList<Find>();
+			JSONArray typeArray = new JSONArray(DataUtil.getInfo(this, DataUtil.ROOT_ADDRESS, KeyConfig.TYPE_STRING));
+			for (int i = 0; i < typeArray.length(); i++) {
+				JSONObject obj = typeArray.getJSONObject(i);
+				typeList.add(new Find(i, obj.getString(KeyConfig.NAME), obj.getString(KeyConfig.ID)));
+			}
+			//显示数据
+			mSpinnerArr[2].setAdapter(new CustomSpinnerAdapter(this, typeList, resource, textviewId));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 初始化乡镇下拉框信息
+	 */
+	private void initCunSpinner() {
+		mSpinnerArr[1].setAdapter(new CustomSpinnerAdapter(this, getCunList(0), resource, textviewId));
+	}
+	
+	/**
+	 * 初始化乡镇下拉框信息
+	 */
+	private void initZhenSpinner(){
+		try {
+			zhenList = new ArrayList<Find>();
+			addressArray = new JSONArray(DataUtil.getInfo(this, DataUtil.ROOT_ADDRESS, KeyConfig.ADDRESS_STRING));
+			for (int i = 0; i < addressArray.length(); i++) {
+				JSONObject obj = addressArray.getJSONObject(i);
+				zhenList.add(new Find(i, obj.getString(KeyConfig.NAME), obj.getString(KeyConfig.ID)));
+			}
+			//显示数据
+			mSpinnerArr[0].setAdapter(new CustomSpinnerAdapter(this, zhenList, resource, textviewId));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 获取村级单位列表
+	 * @param index
+	 */
+	public List<Find> getCunList(int index){
+		cunList = new ArrayList<Find>();
+		try {
+			JSONArray jsonArr = addressArray.getJSONObject(index).getJSONArray(KeyConfig.LIST);
+			for (int i = 0; i < jsonArr.length(); i++) {
+				JSONObject obj = jsonArr.getJSONObject(i);
+				cunList.add(new Find(i, obj.getString(KeyConfig.NAME), obj.getString(KeyConfig.ID)));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return cunList;
+	}
 	
 	@Override
 	public void onListResponse(int what,List<JSONObject> data) {
 		switch (what) {
-		case SPINNER_WHAT:
-			//解析并存储乡镇数据
-			Log.i(TAG,"data.size()= " + data.size());
-			addData = data;
-			findList = new ArrayList<Find>();
-			zhenList = new ArrayList<String>();
-			for (int i = 0; i < addData.size(); i++) {
-				JSONObject obj = addData.get(i);
-				try {
-					String name = obj.getString("name");
-					String id = obj.getString("id");
-					Find find = new Find(i, name, id);
-					zhenList.add(name);
-					findList.add(find);
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-			}
-			
-			//显示数据
-			mSpinnerArr[0].setAdapter(new CustomSpinnerAdapter(this, zhenList, resource, textviewId));
-			
-			mSpinnerArr[1].setAdapter(new CustomSpinnerAdapter(this, getCunList(0), resource, textviewId));
-			
-			util.setJSONObject(INIT_WHAT, HttpConfig.FAMILY_LIST_URL);//获取初始数据
-			
-			break;
+//		case SPINNER_WHAT:
+//			//解析并存储乡镇数据
+//			Log.i(TAG,"data.size()= " + data.size());
+//			addData = data;
+//			zhenList = new ArrayList<String>();
+//			for (int i = 0; i < addData.size(); i++) {
+//				JSONObject obj = addData.get(i);
+//				try {
+//					String name = obj.getString("name");
+//					String id = obj.getString("id");
+//					Find find = new Find(i, name, id);
+//					zhenList.add(name);
+//				} catch (JSONException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//			
+//			
+//			
+////			mSpinnerArr[1].setAdapter(new CustomSpinnerAdapter(this, getCunList(0), resource, textviewId));
+//			
+//			break;
 		case INIT_WHAT://初始化数据
 			mAdapter = new Tv2VerAdapter(this, data, FupinDataActivityConfig.ITEM_LAYOUT_ID,
 					FupinDataActivityConfig.ITEM_ARR_ID,FupinDataActivityConfig.ITEM_ARR,FupinDataActivityConfig.KEY);
@@ -121,37 +180,24 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 		}
 	}
 	
-	/**
-	 * 获取村级单位列表
-	 * @param index
-	 */
-	public List<String> getCunList(int index){
-		cunList = new ArrayList<String>();
-		try {
-			JSONArray jsonArr = addData.get(index).getJSONArray("list");
-			for (int i = 0; i < jsonArr.length(); i++) {
-				cunList.add(jsonArr.getJSONObject(i).getString("name"));
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return cunList;
-	}
+	private String zhenId,cunId,typeId;
 	
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 		switch (parent.getId()) {
 		case 0://选择乡镇
-			Log.i(TAG, getCunList(position).toString());
 			mSpinnerArr[1].setAdapter(new CustomSpinnerAdapter(this, getCunList(position), resource, textviewId));
+			zhenId = zhenList.get(position).getId();
 			break;
 		case 1://选择村
-			
+			cunId = cunList.get(position).getId();
 			break;
 		case 2://选择贫困状态
-			
+			typeId = typeList.get(position).getId();
 			break;
 		}
+		String str = "?z=" + zhenId + "&c=" + cunId + "&type=" + typeId;
+		util.setJSONObject(INIT_WHAT, HttpConfig.FAMILY_LIST_URL + str);//获取初始数据
 	}
 	
 	@Override

@@ -45,7 +45,14 @@ public class DialogFactory {
 		}
 	}
 
+	private boolean isDialog;
+	
+	public void setIsDialog(boolean isDialog){
+		this.isDialog = isDialog;
+	}
+	
 	public void showDialog(){
+		if (isDialog) return;
 		if (dialogShowCheck) {
 			dialogShowCheck = false;
 		}else {
@@ -56,6 +63,7 @@ public class DialogFactory {
 	}
 
 	public void dismissDialog(){
+		if (isDialog) return;
 		if (dialogDismissCheck) {
 			dialogDismissCheck = false;
 		}else {
@@ -66,6 +74,7 @@ public class DialogFactory {
 	}
 
 	public void dismissDialogDefault(){
+		if (isDialog) return;
 		if (dialog != null) {
 			dialog.dismiss();
 		}

@@ -25,19 +25,18 @@ public class FlashActivity extends BaseActivity implements OnTime,ToReceive{
 	
 	@Override
 	public void initData() {
+		receiveUtil = new ReceiveUtil(this, this);
 		Intent intent = new Intent(this, InitService.class);
 		intent.putExtra(InitService.KEY_START_SERVICE_FOR, InitService.TASK_LOGIN);
 		startService(intent);
-		receiveUtil = new ReceiveUtil(this, this);
+		new TimerUtil(this).start(5000);
 	}
 	
 	private boolean is;
 	
 	@Override
 	public void onTime() {
-		if (is) {
-			startActivity(new Intent(this, MainActivity.class));
-		} else {
+		if (!is) {
 			startActivity(new Intent(this, LoginActivity.class));
 		}
 		finish();
@@ -64,10 +63,9 @@ public class FlashActivity extends BaseActivity implements OnTime,ToReceive{
 	public void toReceive(String action) {
 		if (action.equals(ACTION_STRAT_SUCCESS)) {
 			is = true;
-			new TimerUtil(this).start(2000);
+			startActivity(new Intent(this, MainActivity.class));
 		}else if (action.equals(ACTION_STRAT_ERROR)) {
-			is = false;
-			new TimerUtil(this).start(2000);
+			startActivity(new Intent(this, LoginActivity.class));
 		}
 	}
 

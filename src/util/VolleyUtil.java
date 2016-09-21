@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.util.Log;
 import dialog.DialogFactory;
+import util.data.ConfigUtil.JsonDataConfig;
 import util.entity.JsonUtil;
 
 import com.android.volley.AuthFailureError;
@@ -39,6 +40,10 @@ public class VolleyUtil {
 	public static final int POST_DEFALUAT = -1;
 	public static final int POST_SUCCESS = 0;
 	public static final int POST_ERROR = 1;
+	
+	public void setIsDialog(boolean isDialog){
+		factory.setIsDialog(isDialog);
+	}
 
 	/**
 	 * 消息标记
@@ -65,6 +70,11 @@ public class VolleyUtil {
 		factory.setDialogDismissCheck(dialogDismissCheck);
 	} 
 
+	/**
+	 * 获取json list数据
+	 * @param what
+	 * @param url
+	 */
 	public void setJSONObject(final int what,String url){
 
 		factory.showDialog();
@@ -74,7 +84,8 @@ public class VolleyUtil {
 			public void onResponse(JSONObject response) {
 				factory.dismissDialog();
 
-				Log.i(TAG, response.toString());
+				Log.i(TAG,"setJSONObject: " + response.toString());
+				
 				List<JSONObject> data = new ArrayList<JSONObject>();
 				for (int i = 0; i < JsonUtil.getResultJSONArray(response).length(); i++) {
 					try {
@@ -92,6 +103,43 @@ public class VolleyUtil {
 				}
 			}));
 	};
+	
+	/**
+	 * 获取json list数据
+	 * @param what
+	 * @param url
+	 */
+	public void setString(final int what,String url){
+		
+		factory.showDialog();
+		
+		mQueue.add(new StringRequest(url, new Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				factory.dismissDialog();
+				
+				Log.i(TAG,"setString: " + response);
+				
+				int retcode;
+				try {
+					retcode = new JSONObject(response).getInt(JsonDataConfig.INDEX_RETCODE);
+					if (retcode == JsonDataConfig.RETCODE_SUCCESS) {
+						volleyMessageListener.onMessage(what,POST_SUCCESS,response);
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				
+			}}, new Response.ErrorListener() {
+				@Override
+				public void onErrorResponse(VolleyError error) {
+					factory.dismissDialogDefault();
+					error.printStackTrace();
+				}
+			}));
+		
+	};
+	
 	/**
 	 * post 方式
 	 * @param what
@@ -106,7 +154,7 @@ public class VolleyUtil {
 			public void onResponse(String response) {
 				factory.dismissDialog();
 				
-				Log.i(TAG, response.toString());
+				Log.i(TAG,"setStringPost: " + response.toString());
 				
 				Object obj = JsonUtil.getResult(response);
 				if (obj != null) {

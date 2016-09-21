@@ -13,14 +13,15 @@ import android.view.ViewGroup;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import base.adapter.BaseRootAdapter;
+import entity.Find;
 
-public class CustomSpinnerAdapter extends BaseRootAdapter<String> implements SpinnerAdapter{
+public class CustomSpinnerAdapter extends BaseRootAdapter<Find> implements SpinnerAdapter{
 	
 	private List<DataSetObserver> observerList = new ArrayList<DataSetObserver>();
 
 	private int textviewId;
 	
-	public CustomSpinnerAdapter(Context context, List<String> data, int resource,int textviewId) {
+	public CustomSpinnerAdapter(Context context, List<Find> data, int resource,int textviewId) {
 		super(context, data, resource);
 		this.textviewId = textviewId;
 	}
@@ -39,14 +40,14 @@ public class CustomSpinnerAdapter extends BaseRootAdapter<String> implements Spi
 		}else {
 			holder = (ViewHolder) view.getTag();		
 		}
-		holder.textView.setText(data.get(position));
+		holder.textView.setText(data.get(position).getName());
 		return view;
 	}
 
 	@Override
 	public View getDropDownView(int position, View convertView, ViewGroup parent) {//µ¯³ö´°µÄÊÓÍ¼
 		TextView textView = new TextView(context);
-		textView.setText(data.get(position));
+		textView.setText(data.get(position).getName());
 		textView.setGravity(Gravity.CENTER);
 		textView.setTextSize(16);
 		textView.setPadding(10, 10, 10, 10);
@@ -75,7 +76,7 @@ public class CustomSpinnerAdapter extends BaseRootAdapter<String> implements Spi
 	}
 
 	@Override
-	public String getItem(int position) {
+	public Find getItem(int position) {
 		return data.get(position);
 	}
 
