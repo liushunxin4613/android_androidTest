@@ -3,6 +3,8 @@ package adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.leo.androidtest.R;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.DataSetObserver;
@@ -44,13 +46,15 @@ public class CustomSpinnerAdapter extends BaseRootAdapter<Find> implements Spinn
 		return view;
 	}
 
+	@SuppressLint("ResourceAsColor")
 	@Override
 	public View getDropDownView(int position, View convertView, ViewGroup parent) {//µ¯³ö´°µÄÊÓÍ¼
 		TextView textView = new TextView(context);
 		textView.setText(data.get(position).getName());
 		textView.setGravity(Gravity.CENTER);
 		textView.setTextSize(16);
-		textView.setPadding(10, 10, 10, 10);
+		textView.setTextColor(R.color.textview);
+		textView.setPadding(10, 20, 10, 20);
 		return textView;
 	}
 

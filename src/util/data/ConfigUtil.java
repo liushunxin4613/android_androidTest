@@ -213,30 +213,6 @@ public final class ConfigUtil {
 	}
 
 	/**
-	 *	textview参数 
-	 */
-	public static final class ItemTextViewConfig{
-		public static final int LAYOUT_ID = R.layout.item_textview;
-
-		public static final int TV_ARR_ID[] = {
-				R.id.ittv_tv0
-				,R.id.ittv_tv1
-				,R.id.ittv_tv2
-				,R.id.ittv_tv3
-		};
-
-		public static final String TV_ARR[] = {
-				"user"
-				,"num"
-				,"state"
-				,"address"
-		};
-
-		public static final int TV_LEFT_ID = R.array.splv_item_tv_left;
-
-	}
-
-	/**
 	 * notice actvity 配置文件
 	 * @author macos
 	 *

@@ -2,7 +2,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- <color name="immersionColor">#DD338BD7</color> -->
-    <color name="immersionColor">#DD2382EC</color>
+    <!-- <color name="immersionColor">#DD2382EC</color> -->
+    <color name="immersionColor">#DE2910</color>
     <color name="immersionColor_press">#48ADD7</color>
     
     <color name="home_item_bg">#88E5F1F3</color>

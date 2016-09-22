@@ -142,28 +142,6 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 	@Override
 	public void onListResponse(int what,List<JSONObject> data) {
 		switch (what) {
-//		case SPINNER_WHAT:
-//			//解析并存储乡镇数据
-//			Log.i(TAG,"data.size()= " + data.size());
-//			addData = data;
-//			zhenList = new ArrayList<String>();
-//			for (int i = 0; i < addData.size(); i++) {
-//				JSONObject obj = addData.get(i);
-//				try {
-//					String name = obj.getString("name");
-//					String id = obj.getString("id");
-//					Find find = new Find(i, name, id);
-//					zhenList.add(name);
-//				} catch (JSONException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//			
-//			
-//			
-////			mSpinnerArr[1].setAdapter(new CustomSpinnerAdapter(this, getCunList(0), resource, textviewId));
-//			
-//			break;
 		case INIT_WHAT://初始化数据
 			mAdapter = new Tv2VerAdapter(this, data, FupinDataActivityConfig.ITEM_LAYOUT_ID,
 					FupinDataActivityConfig.ITEM_ARR_ID,FupinDataActivityConfig.ITEM_ARR,FupinDataActivityConfig.KEY);
@@ -196,7 +174,7 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 			typeId = typeList.get(position).getId();
 			break;
 		}
-		String str = "?z=" + zhenId + "&c=" + cunId + "&type=" + typeId;
+		String str = "?z=" + zhenId + "&c=" + cunId + "&t=" + typeId;
 		util.setJSONObject(INIT_WHAT, HttpConfig.FAMILY_LIST_URL + str);//获取初始数据
 	}
 	

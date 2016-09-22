@@ -9,40 +9,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="@color/white"
+        android:orientation="horizontal"
         tools:ignore="DisableBaselineAlignment" >
 
-        <Spinner
-            android:id="@+id/splv_sp0"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null" />
-
-        <View
-            android:layout_width="2px"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/line_gray" />
+            android:orientation="horizontal"
+            android:padding="@dimen/view_margin_less" >
 
-        <Spinner
-            android:id="@+id/splv_sp1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null" />
+            <Spinner
+                android:id="@+id/splv_sp0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null" />
 
-        <View
-            android:layout_width="2px"
-            android:layout_height="match_parent"
-            android:background="@color/line_gray" />
+            <View
+                android:layout_width="2px"
+                android:layout_height="match_parent"
+                android:background="@color/line_gray" />
 
-        <Spinner
-            android:id="@+id/splv_sp2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null" />
+            <Spinner
+                android:id="@+id/splv_sp1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null" />
+
+            <View
+                android:layout_width="2px"
+                android:layout_height="match_parent"
+                android:background="@color/line_gray" />
+
+            <Spinner
+                android:id="@+id/splv_sp2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null" />
+        </LinearLayout>
     </LinearLayout>
 
     <customLib.DynamicListView
@@ -51,12 +58,11 @@
         android:layout_height="match_parent"
         android:background="@color/view_press"
         android:divider="@null"
-        android:drawSelectorOnTop="true"
-        android:listSelector="@drawable/ripple_bg"
         android:dividerHeight="@dimen/view_margin_small"
+        android:drawSelectorOnTop="true"
         android:paddingLeft="@dimen/view_margin_small"
         android:paddingRight="@dimen/view_margin_small"
         android:scrollbars="none" >
     </customLib.DynamicListView>
-    
+
 </LinearLayout>

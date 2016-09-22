@@ -28,7 +28,6 @@
                 android:id="@+id/item_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/icon_baseinfo"
                 android:contentDescription="@string/image_string" />
 
             <TextView
@@ -36,8 +35,7 @@
                 style="@style/mid_black_textstyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_10"
-                android:text="@string/ac_gridview_0" />
+                android:layout_marginTop="@dimen/margin_10" />
         </LinearLayout>
 
         <View
