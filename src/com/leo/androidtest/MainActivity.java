@@ -149,6 +149,11 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_3));
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.PROJECT_LIST_URL);
 			break;
+		case 4://FupinCheck
+			intent.setClass(this, WebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_4));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.KPI_URL);
+			break;
 		case 5://StatisticsAnalyze
 			intent.setClass(this, WebActivity.class);
 			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_5));

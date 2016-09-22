@@ -29,8 +29,9 @@ public class BaseActionBarCenterActivity extends BaseImmersionActivity {
 		if (actionBar == null) {
 			return false;
 		}
-		actionBarViewCenter(actionBar);
-//		actionBarCenter(actionBar);
+		actionBarCenter(actionBar);
+		getActionBar().setDisplayShowHomeEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
 		return true;
 	}
 	

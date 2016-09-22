@@ -13,6 +13,7 @@
         android:divider="@null"
         android:dividerHeight="@dimen/view_margin_small"
         android:drawSelectorOnTop="true"
+        android:listSelector="@drawable/ripple_bg"
         android:paddingLeft="@dimen/view_margin_small"
         android:paddingRight="@dimen/view_margin_small"
         android:scrollbars="none" >

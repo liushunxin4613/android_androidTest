@@ -16,7 +16,7 @@
         android:hardwareAccelerated="true"
         android:icon="@drawable/icon_logo"
         android:label="@string/app_name"
-        android:logo="@drawable/back_arrow1"
+        android:logo="@drawable/back_btn"
         android:theme="@style/AppTheme" >
         <service android:name="com.leo.androidtest.InitService" >
         </service>
