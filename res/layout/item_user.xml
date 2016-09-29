@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin_20"
     android:background="@color/white"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="@dimen/margin_20" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,20 +13,18 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:text="黄华力"
-            style="@style/textview_item"
             android:id="@+id/item_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp" />
+
         <TextView
-            android:text="男"
             android:id="@+id/item_user_sex"
             style="@style/textview_item"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_40" />
-
+            android:layout_weight="2"/>
     </LinearLayout>
 
     <LinearLayout
@@ -42,34 +40,51 @@
             android:background="@drawable/map_2x" />
 
         <TextView
-            android:text="竹溪瓦米沟村4组"
             android:id="@+id/item_user_dizhi"
             style="@style/textview_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_10" />
-        
-         <TextView
-            style="@style/textview_item"
-            android:layout_marginLeft="@dimen/margin_40"
-            android:layout_width="wrap_content"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/tv_with"/>
+            android:layout_weight="1" >
+
+            <TextView
+                style="@style/textview_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_with" />
+
+            <TextView
+                android:id="@+id/item_user_num"
+                style="@style/textview_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10" />
+
+            <TextView
+                style="@style/textview_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_end" />
+        </LinearLayout>
 
         <TextView
-            android:text="3"
-            android:id="@+id/item_user_num"
+            android:id="@+id/item_user_state"
             style="@style/textview_item"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_10" />
-        
-        <TextView
-            style="@style/textview_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_end"/>
-        
+            android:layout_weight="2" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,19 +95,10 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:text="绝对贫困农户"
-            android:id="@+id/item_user_state"
-            style="@style/textview_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        
-        <TextView
-            android:text="致贫原因"
             android:id="@+id/item_user_reason"
             style="@style/textview_item"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_40" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>
