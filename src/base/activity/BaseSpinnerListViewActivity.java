@@ -18,6 +18,10 @@ public class BaseSpinnerListViewActivity extends BaseActionBarCenterActivity imp
 
 	private int spinnerArr[];
 	private int listviewId;
+	
+	public static final int SP_ZHEN_ID = 1001;
+	public static final int SP_CUN_ID = 1002;
+	public static final int SP_TYPE_ID = 1003;
 
 	/**
 	 * 此方法需要在super.initView()之前完成
@@ -36,7 +40,7 @@ public class BaseSpinnerListViewActivity extends BaseActionBarCenterActivity imp
 		mSpinnerArr = new Spinner[spinnerArr.length];
 		for (int i = 0; i < mSpinnerArr.length; i++) {
 			mSpinnerArr[i] = (Spinner) findViewById(spinnerArr[i]);
-			mSpinnerArr[i].setId(i);
+			mSpinnerArr[i].setId(SP_ZHEN_ID + i);
 			mSpinnerArr[i].setOnItemSelectedListener(this);
 		}
 

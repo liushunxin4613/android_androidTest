@@ -1,22 +1,13 @@
 package com.leo.androidtest;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import activity.BaseInfoActvity;
-import activity.FupinCheckActivity;
 import activity.FupinDataActivity;
-import activity.FupinProjectManageActivity;
-import activity.MapWebViewActivity;
-import activity.NoticeAnnouncementActvity;
-import activity.PolicyMessageActivity;
-import activity.StatisticsAnalyzeActivity;
-import activity.WebActivity;
-import adapter.GridViewAdapter;
+import activity.LoginActivity;
+import adapter.GridView1Adapter;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.Menu;
@@ -28,9 +19,12 @@ import base.activity.BaseActionBarTitleCenterActivity;
 import android.widget.ScrollView;
 import android.widget.Toast;
 import customLib.ExpandGridView;
-import util.data.ConfigUtil.GridViewConfig;
+import entity.GridViewInfo;
+import util.data.ConfigUtil.GridView1Config;
 import util.data.ConfigUtil.HttpConfig;
 import util.data.ConfigUtil.MainActivityConfig;
+import web.MapWebActivity;
+import web.WebActivity;
 import util.data.DataUtil;
 
 public class MainActivity extends BaseActionBarTitleCenterActivity implements OnItemClickListener{
@@ -50,7 +44,7 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.setting0://账户信息
-			
+			startActivity(new Intent(this, LoginActivity.class));
 			break;
 		case R.id.setting1://退出登录
 			DataUtil.cleanInfo(this);//清除数据
@@ -62,12 +56,12 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 
 	//GridView
 	private ExpandGridView gridView;
-	private GridViewAdapter gridViewAdapter;
-
-	private String to[];
+	private GridView1Adapter gridViewAdapter;
+	private List<GridViewInfo> gridViewData; 
 
 	private int iconArr[];
 	private int textArr[];
+	private int colorArr[];
 
 	private int numColumns;
 
@@ -78,33 +72,28 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 	public void initView() {
 		super.initView();
 
-		scrollView = (ScrollView) findViewById(GridViewConfig.SCROLLVIEW_LAYOUT_ID);
+		scrollView = (ScrollView) findViewById(GridView1Config.SCROLLVIEW_LAYOUT_ID);
 
 		//GridView
-		gridView = (ExpandGridView) findViewById(GridViewConfig.GRIDVIEW_ID);
+		gridView = (ExpandGridView) findViewById(GridView1Config.GRIDVIEW_ID);
 
-		to = GridViewConfig.GRIDVIEW_TO_ARRID;
+		iconArr = GridView1Config.GRIDVIEW_ICON_ARRID;
+		textArr = GridView1Config.GRIDVIEW_TEXT_ARRID;
+		colorArr = GridView1Config.GRIDVIEW_COLOR_ARR;
 
-		iconArr = GridViewConfig.GRIDVIEW_ICON_ARRID;
-		textArr = GridViewConfig.GRIDVIEW_TEXT_ARRID;
-
-		List<Map<String, Integer>> mList = new ArrayList<Map<String,Integer>>();
-
+		//
+		gridViewData = new ArrayList<GridViewInfo>();
 		for (int i = 0; i < iconArr.length; i++) {
-			Map<String, Integer> map = new HashMap<String, Integer>();
-			map.put(to[0], iconArr[i]);
-			map.put(to[1], textArr[i]);
-			mList.add(map);
+			GridViewInfo info = new GridViewInfo(textArr[i], colorArr[i], iconArr[i]);
+			gridViewData.add(info);
 		}
-
-		gridViewAdapter = new GridViewAdapter(this, mList, GridViewConfig.GRIDVIEW_LAYOUT_ID,
-				GridViewConfig.GRIDVIEW_FROM_ARRID, to);
+		
+		gridViewAdapter = new GridView1Adapter(this, gridViewData, GridView1Config.GRIDVIEW_LAYOUT_ID, GridView1Config.GRIDVIEW_FROM_ARRID);
 		gridView.setAdapter(gridViewAdapter);
 
-		numColumns = GridViewConfig.NUM_COLUMNS;
+		numColumns = GridView1Config.NUM_COLUMNS;
 
 		gridView.setNumColumns(numColumns);
-		gridViewAdapter.setNumColumns(numColumns);
 
 		//设置点击事件
 		gridView.setOnItemClickListener(this);
@@ -128,26 +117,27 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 		startService(intent);
 	}
 	
-	
-	private Class<?> activityClassArr[] = {
-			BaseInfoActvity.class
-			,MapWebViewActivity.class
-			,FupinDataActivity.class
-			,FupinProjectManageActivity.class
-			,FupinCheckActivity.class
-			,StatisticsAnalyzeActivity.class
-			,NoticeAnnouncementActvity.class
-			,PolicyMessageActivity.class
-	}; 
-
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Intent intent = new Intent();
 		switch (position) {
-		case 3://FupinProject
+		case 0://BaseInfo
 			intent.setClass(this, WebActivity.class);
-			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_3));
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_0));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.BASE_INFO_URL);
+			break;
+		case 1://FupinProject
+			intent.setClass(this, WebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_1));
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.PROJECT_LIST_URL);
+			break;
+		case 2://FupinData
+			intent.setClass(this, FupinDataActivity.class);
+			break;
+		case 3://Map
+			intent.setClass(this, MapWebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_3));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.MAP_DETAIL_URL);
 			break;
 		case 4://FupinCheck
 			intent.setClass(this, WebActivity.class);
@@ -169,8 +159,15 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_7));
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.NEWS_LIST_URL);
 			break;
-		default:
-			intent.setClass(this, activityClassArr[position]);
+		case 8://lvyou
+			intent.setClass(this, WebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_8));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.TICKET_URL);
+			break;
+		case 9://Policy
+			intent.setClass(this, WebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_9));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.SHOP_URL);
 			break;
 		}
 		startActivity(intent);

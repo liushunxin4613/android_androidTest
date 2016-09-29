@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import adapter.CustomSpinnerAdapter;
 import adapter.Tv2VerAdapter;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import base.activity.BaseSpinnerListViewActivity;
@@ -47,37 +48,93 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 	private final int INIT_WHAT = 0;
 	private final int REFRESH_WHAT = 1;
 	private final int LOADMORE_WHAT = 2;
-	
+
 	private int resource;
 	private int textviewId;
-	
+
+	public static final String INTENT_CID = "intent_cid";
+	public static final String INTENT_ZID = "intent_zid";
+	public static final String INTENT_TID = "intent_tid";
+	public static final String INTENT_URL = "intent_url";
+
+	private String zhenId,cunId,typeId;
+
+	public String getUrl(){
+		String url = HttpConfig.FAMILY_LIST_URL
+				+ "?z=" + zhenId
+				+ "&c=" + cunId
+				+ "&t=" + typeId;
+		Log.i(TAG, "url : " + url);
+		return url;
+	}
+
 	@Override
 	public void initData() {
 		//设置初始参数
 		resource = ItemSpinnerConfig.LAYOUT_ID;
 		textviewId = ItemSpinnerConfig.TEXTVIEW_ID;
 		initAddress();
-		
+
 		util = new VolleyUtil(this);
 		util.setResponseListener(this);
-		util.setJSONObject(INIT_WHAT, HttpConfig.FAMILY_LIST_URL);//获取初始数据
+
+		getIntentDataId();
+		util.setJSONObject(INIT_WHAT, getUrl());//获取初始数据
+	}
+
+	public void getIntentDataId(){
+		//获取getIntent()
+		zhenId = getIntent().getStringExtra(INTENT_ZID);
+		if (zhenId == null) {
+			zhenId = "";
+		}
+		cunId = getIntent().getStringExtra(INTENT_CID);
+		if (cunId == null) {
+			cunId = "";
+		}
+		typeId = getIntent().getStringExtra(INTENT_TID);
+		if (typeId == null) {
+			typeId = "";
+		}
 		
+		Log.i(TAG, "zhenId = " + zhenId);
+		Log.i(TAG, "cunId = " + cunId);
+		Log.i(TAG, "typeId = " + typeId);
+		
+		for (int i = 0; i < zhenList.size(); i++) {
+			if (zhenId.equals(zhenList.get(i).getId())) {
+				mSpinnerArr[0].setSelection(i);
+				initCunSpinner(i);
+			}
+		}
+		for (int j = 0; j < cunList.size(); j++) {
+			Log.i(TAG, "cunList.get(i).getId() = " + cunList.get(j).getId());
+			if (cunId.equals(cunList.get(j).getId())) {
+				Log.i(TAG, "I = " + j);
+				mSpinnerArr[1].setSelection(j);
+			}
+		}
+		for (int i = 0; i < typeList.size(); i++) {
+			if (typeId.equals(typeList.get(i).getId())) {
+				mSpinnerArr[2].setSelection(i);
+			}
+		}
 	}
 
 	private JSONArray addressArray;
 	private List<Find> typeList;
 	private List<Find> zhenList;
 	private List<Find> cunList;
-	
+
 	/**
 	 * 提取村镇信息
 	 */
 	private void initAddress(){
 		initZhenSpinner();
-		initCunSpinner();
+		initCunSpinner(0);
 		initTypeSpinner();
 	}
-	
+
 	/**
 	 * 初始化类型下拉框信息
 	 */
@@ -87,7 +144,7 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 			JSONArray typeArray = new JSONArray(DataUtil.getInfo(this, DataUtil.ROOT_ADDRESS, KeyConfig.TYPE_STRING));
 			for (int i = 0; i < typeArray.length(); i++) {
 				JSONObject obj = typeArray.getJSONObject(i);
-				typeList.add(new Find(i, obj.getString(KeyConfig.NAME), obj.getString(KeyConfig.ID)));
+				typeList.add(new Find(obj.getString(KeyConfig.NAME), obj.getString(KeyConfig.ID)));
 			}
 			//显示数据
 			mSpinnerArr[2].setAdapter(new CustomSpinnerAdapter(this, typeList, resource, textviewId));
@@ -95,14 +152,14 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * 初始化乡镇下拉框信息
+	 * 初始化村下拉框信息
 	 */
-	private void initCunSpinner() {
-		mSpinnerArr[1].setAdapter(new CustomSpinnerAdapter(this, getCunList(0), resource, textviewId));
+	private void initCunSpinner(int position) {
+		mSpinnerArr[1].setAdapter(new CustomSpinnerAdapter(this, getCunList(position), resource, textviewId));
 	}
-	
+
 	/**
 	 * 初始化乡镇下拉框信息
 	 */
@@ -112,7 +169,7 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 			addressArray = new JSONArray(DataUtil.getInfo(this, DataUtil.ROOT_ADDRESS, KeyConfig.ADDRESS_STRING));
 			for (int i = 0; i < addressArray.length(); i++) {
 				JSONObject obj = addressArray.getJSONObject(i);
-				zhenList.add(new Find(i, obj.getString(KeyConfig.NAME), obj.getString(KeyConfig.ID)));
+				zhenList.add(new Find(obj.getString(KeyConfig.NAME), obj.getString(KeyConfig.ID)));
 			}
 			//显示数据
 			mSpinnerArr[0].setAdapter(new CustomSpinnerAdapter(this, zhenList, resource, textviewId));
@@ -120,7 +177,7 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * 获取村级单位列表
 	 * @param index
@@ -131,14 +188,14 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 			JSONArray jsonArr = addressArray.getJSONObject(index).getJSONArray(KeyConfig.LIST);
 			for (int i = 0; i < jsonArr.length(); i++) {
 				JSONObject obj = jsonArr.getJSONObject(i);
-				cunList.add(new Find(i, obj.getString(KeyConfig.NAME), obj.getString(KeyConfig.ID)));
+				cunList.add(new Find(obj.getString(KeyConfig.NAME), obj.getString(KeyConfig.ID)));
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		return cunList;
 	}
-	
+
 	@Override
 	public void onListResponse(int what,List<JSONObject> data) {
 		switch (what) {
@@ -157,30 +214,41 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 			break;
 		}
 	}
-	
-	private String zhenId,cunId,typeId;
+
+	private boolean bs;
 	
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-		switch (parent.getId()) {
-		case 0://选择乡镇
-			mSpinnerArr[1].setAdapter(new CustomSpinnerAdapter(this, getCunList(position), resource, textviewId));
-			zhenId = zhenList.get(position).getId();
-			break;
-		case 1://选择村
-			cunId = cunList.get(position).getId();
-			break;
-		case 2://选择贫困状态
-			typeId = typeList.get(position).getId();
-			break;
+		if (!bs) {
+			bs = true;
+			return;
 		}
-		String str = "?z=" + zhenId + "&c=" + cunId + "&t=" + typeId;
-		util.setJSONObject(INIT_WHAT, HttpConfig.FAMILY_LIST_URL + str);//获取初始数据
+		switch (parent.getId()) {
+		case SP_ZHEN_ID://选择乡镇
+			initCunSpinner(position);
+			if (!zhenList.get(position).getId().equals(zhenId)) {
+				zhenId = zhenList.get(position).getId();
+				util.setJSONObject(INIT_WHAT, getUrl());
+			}
+			break;
+		case SP_CUN_ID://选择村
+			if (!cunList.get(position).getId().equals(cunId)) {
+				cunId = cunList.get(position).getId();
+				util.setJSONObject(INIT_WHAT, getUrl());
+			}
+			break;
+		case SP_TYPE_ID://选择贫困状态
+			if (!typeList.get(position).getId().equals(typeId)) {
+				typeId = typeList.get(position).getId();
+				util.setJSONObject(INIT_WHAT, getUrl());
+			}
+			break;//获取初始数据
+		}
 	}
-	
+
 	@Override
 	public boolean onRefresh(DynamicListView dynamicListView) {
-		util.setJSONObject(REFRESH_WHAT, HttpConfig.FAMILY_LIST_URL);
+		util.setJSONObject(REFRESH_WHAT, getUrl());
 		return false;
 	}
 
@@ -188,7 +256,7 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 	public boolean onLoadMore(DynamicListView dynamicListView) {
 		//TODO暂不清楚
 		if (mAdapter.getCount() % JsonDataConfig.LIST_NUM == 0) {
-			util.setJSONObject(LOADMORE_WHAT, HttpConfig.FAMILY_LIST_URL + HttpConfig.LIST_NEXT_URL + (mAdapter.getCount() / JsonDataConfig.LIST_NUM + 1));
+			util.setJSONObject(LOADMORE_WHAT, getUrl() + "&page="+ (mAdapter.getCount() / JsonDataConfig.LIST_NUM + 1));
 		}else {
 			mListView.setOnMoreListener(null);
 			return true;

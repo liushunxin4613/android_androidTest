@@ -26,7 +26,7 @@ public class Tv2VerAdapter extends BaseOrderlyAdapter<JSONObject> {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View convertView, ViewGroup parent){
 		ViewHolder holder = null;
 		View view = convertView;
 		if(view == null){
@@ -46,11 +46,7 @@ public class Tv2VerAdapter extends BaseOrderlyAdapter<JSONObject> {
 		}
 		
 		for (int i = 0; i < holder.tvArr.length; i++) {
-			try {
-				holder.tvArr[i].setText(data.get(position).getString(arr[i]));
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
+			holder.tvArr[i].setText(data.get(position).optString(arr[i]));
 		}
 		
 		return view;

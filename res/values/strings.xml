@@ -6,7 +6,7 @@
     
     <!-- 设置 -->
     <string name="action_setting">设 置</string>
-    <string name="action_user">账户信息</string>
+    <string name="action_user">切换账号</string>
     <string name="main_exit_remind">再按一次退出</string>
     <string name="action_exit_login">退出登录</string>
     <string name="dialog_loading_title">正在加载中&#8230;</string>
@@ -14,15 +14,17 @@
     <!-- MainActivity -->
 
 	<string name="ac_gridview_0">基础信息</string>
-	<string name="ac_gridview_1">电子地图</string>
+	<string name="ac_gridview_1">扶贫管理</string>
 	<string name="ac_gridview_2">扶贫大数据</string>
-	<string name="ac_gridview_3">扶贫项目管理</string>
+	<string name="ac_gridview_3">电子地图</string>
 	<string name="ac_gridview_4">扶贫考核</string>
 	<string name="ac_gridview_5">统计分析</string>
 	<string name="ac_gridview_6">通知公告</string>
 	<string name="ac_gridview_7">政策资讯</string>
+	<string name="ac_gridview_8">旅游</string>
+	<string name="ac_gridview_9">特产</string>
 	
-	<string name="ac_gridview_8">贫困户详细信息</string>
+	<string name="ac_gridview_2_1">贫困户详细信息</string>
 	
 	 <!-- DynameListView -->
 	 

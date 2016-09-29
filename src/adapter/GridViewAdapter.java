@@ -3,12 +3,13 @@ package adapter;
 import java.util.List;
 import java.util.Map;
 
+import com.leo.androidtest.R;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import base.adapter.BaseRootAdapter;
-import util.data.ConfigUtil.GridViewConfig;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -53,8 +54,8 @@ public class GridViewAdapter extends BaseRootAdapter<Map<String, Integer>> {
 		int width = parent.getWidth()/num;
 		view.setLayoutParams(new LayoutParams(width, LayoutParams.WRAP_CONTENT));
 
-		View leftView = view.findViewById(GridViewConfig.VIEW_LEFT);
-		View bottomView = view.findViewById(GridViewConfig.VIEW_BOTTOM);
+		View leftView = view.findViewById(R.id.item_view_left);
+		View bottomView = view.findViewById(R.id.item_view_bottom);
 
 		//判定leftView和bottomView的显示和隐藏
 		int index = position + 1;

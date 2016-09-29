@@ -37,6 +37,7 @@ public class LoginActivity extends BaseImmersionActivity implements OnClickListe
 	@Override
 	public void initView() {
 		super.initView();
+		setStatusColor(getResources().getColor(R.color.immersionColor_bg));
 		
 		usernameEt = (EditText) findViewById(LoginActivityConfig.EDIT_ARR_ID[0]);
 		pwdEt = (EditText) findViewById(LoginActivityConfig.EDIT_ARR_ID[1]);
@@ -97,6 +98,7 @@ public class LoginActivity extends BaseImmersionActivity implements OnClickListe
 				DataUtil.saveMapInfo(this, DataUtil.ROOT_SHAREPREFERENCE_USER_INFO, map);//´æ´¢µÇÂ¼ÐÅÏ¢
 				Toast.makeText(this, R.string.login_toa1, Toast.LENGTH_SHORT).show();
 				startActivity(new Intent(this, MainActivity.class));
+				finish();
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}

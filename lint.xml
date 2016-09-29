@@ -8,6 +8,18 @@
         <ignore path="res/layout/item_spinner.xml" />
         <ignore path="res/layout/item_user.xml" />
     </issue>
+    <issue id="ExportedContentProvider">
+        <ignore path="AndroidManifest.xml" />
+    </issue>
+    <issue id="ExportedReceiver">
+        <ignore path="AndroidManifest.xml" />
+    </issue>
+    <issue id="ExportedService">
+        <ignore path="AndroidManifest.xml" />
+    </issue>
+    <issue id="HandlerLeak">
+        <ignore path="src/dialog/DialogFactory.java" />
+    </issue>
     <issue id="OldTargetApi">
         <ignore path="AndroidManifest.xml" />
     </issue>
@@ -48,6 +60,7 @@
     </issue>
     <issue id="UselessParent">
         <ignore path="res/layout/include_spinner_listview.xml" />
+        <ignore path="res/layout/item_gridview1.xml" />
         <ignore path="res/layout/item_spinner.xml" />
         <ignore path="res/layout/item_textview.xml" />
     </issue>

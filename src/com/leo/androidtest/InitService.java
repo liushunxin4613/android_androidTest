@@ -8,6 +8,8 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.igexin.sdk.PushManager;
+
 import activity.FlashActivity;
 import android.content.Intent;
 import android.util.Log;
@@ -32,6 +34,9 @@ public class InitService extends BaseService implements OnVolleyResponseListener
 
 	@Override
 	public void onCreate() {
+		//Æô¶¯ÍÆËÍ
+		PushManager.getInstance().initialize(this);
+		
 		volleyUtil = new VolleyUtil(this);
 		volleyUtil.setResponseListener(this);
 		volleyUtil.setMessageListener(this);

@@ -20,7 +20,7 @@ public final class ConfigUtil {
 				,R.string.ac_gridview_7
 		};
 	}
-	
+
 	/**
 	 * actionBar center参数
 	 * @author macos
@@ -43,7 +43,7 @@ public final class ConfigUtil {
 		public static final int IMGBT_LIST_ID = R.id.ab_three_list;
 		public static final int TITLE_ID = R.id.ab_three_title;
 	}
-	
+
 	/**
 	 * actionBar title center参数
 	 * @author macos
@@ -53,7 +53,7 @@ public final class ConfigUtil {
 		public static final int LAYOUT_ID = R.layout.actionbar_title_center;
 		public static final int TITLE_ID = R.id.ab_title_center_tv;
 	}
-	
+
 	/**
 	 * 网络配置
 	 * @author macos
@@ -74,18 +74,36 @@ public final class ConfigUtil {
 		public static final String NOTICE_DETAIL_WITH_URL = DOMAIN_URL + "/notice/";
 		public static final String MAP_DETAIL_URL = DOMAIN_URL + "/map";
 		public static final String USER_JSON_URI = DOMAIN_URL + "/user/login";
-		
+
 		public static final String NEWS_LIST_URL = DOMAIN_URL + "/news/list";
 		public static final String NEWS_DETAIL_WITH_URL = DOMAIN_URL + "/news/";
 		public static final String PROJECT_LIST_URL = DOMAIN_URL + "/project/list";
 		public static final String PROJECT_DETAIL_WITH_URL = DOMAIN_URL + "/project/";
 		public static final String ANALYSIS_URL = DOMAIN_URL + "/analysis";
 		public static final String KPI_URL = DOMAIN_URL + "/kpi";
-		
+		public static final String TICKET_URL = "http://www.hbyoo.com/wap/ticket/lists/?city=7";
+		public static final String SHOP_URL = "https://shop137637066.taobao.com/";
+
 		public static final String END_URL = "/show";
-		public static final String LIST_NEXT_URL = "?page=";
+		public static final String LIST_NEXT_URL = "page=";
 		public static final String CALLBACK_JSON = "?callback=json";
 		
+		public static final String URL_FAMILY_LIST_EG = "family/list";
+
+	}
+
+	/**
+	 * volley 
+	 */
+	public static final class VolleyConfig{
+		/**
+		 * 网络超时时间
+		 */
+		public static final int OUT_TIME = 5 * 1000;
+		/**
+		 * 重新请求次数
+		 */
+		public static final int RETREIS_NUM = 2;
 	}
 
 	/**
@@ -106,17 +124,6 @@ public final class ConfigUtil {
 		public static final String ID = "id";
 		public static final String LIST = "list";
 	}
-	
-	/**
-	 * webview 配置
-	 * @author macos
-	 *
-	 */
-	public static final class WebViewConfig{
-		public static final int LAYOUT_ID = R.layout.activity_webview;
-
-		public static final int WEBVIEW_ID = R.id.ac_wv;
-	}
 
 	/**
 	 * FlashActivity 参数
@@ -124,7 +131,7 @@ public final class ConfigUtil {
 	public static final class FlashActivityConfig{
 		public static final int LAYOUT_ID = R.layout.activity_flash;
 	}
-	
+
 	/**
 	 *MainActivity配置
 	 */
@@ -139,32 +146,32 @@ public final class ConfigUtil {
 	 * @author macos
 	 *
 	 */
-	public static final class GridViewConfig{
+	public static final class GridView1Config{
 		public static final int SCROLLVIEW_LAYOUT_ID = R.id.ac_scrollview;
-		
+
 		//GridView
 		public static final int GRIDVIEW_ID = R.id.ac_main_gridView;
-		public static final int GRIDVIEW_LAYOUT_ID = R.layout.item_gridview;
+		public static final int GRIDVIEW_LAYOUT_ID = R.layout.item_gridview1;
 
 		public static final int GRIDVIEW_FROM_ARRID[] = {
-				R.id.item_image
-				,R.id.item_text
-		};
-		public static final String GRIDVIEW_TO_ARRID[] = {
-				"img"
-				,"text"
+				R.id.item_gridview1_image
+				,R.id.item_gridview1_text
+				,R.id.item_gridview1_ly
+				,R.id.item_gridview1_lyy
 		};
 
 		//gridview icon
 		public static final int GRIDVIEW_ICON_ARRID[] = {
 				R.drawable.icon_baseinfo
-				,R.drawable.icon_map
+				,R.drawable.icon_fupin_guanli
 				,R.drawable.icon_fupin_data
-				,R.drawable.icon_fupin_project
+				,R.drawable.icon_map
 				,R.drawable.icon_fupin_check
 				,R.drawable.icon_tongji
 				,R.drawable.icon_notice
 				,R.drawable.icon_zhence
+				,R.drawable.icon_lvyou
+				,R.drawable.icon_techan
 		};
 
 		//gridview icon text
@@ -177,6 +184,21 @@ public final class ConfigUtil {
 				,R.string.ac_gridview_5
 				,R.string.ac_gridview_6
 				,R.string.ac_gridview_7
+				,R.string.ac_gridview_8
+				,R.string.ac_gridview_9
+		};
+
+		public static final int GRIDVIEW_COLOR_ARR[] = {
+				R.drawable.yj_gv0_shape
+				,R.drawable.yj_gv1_shape
+				,R.drawable.yj_gv2_shape
+				,R.drawable.yj_gv3_shape
+				,R.drawable.yj_gv4_shape
+				,R.drawable.yj_gv5_shape
+				,R.drawable.yj_gv6_shape
+				,R.drawable.yj_gv7_shape
+				,R.drawable.yj_gv8_shape
+				,R.drawable.yj_gv9_shape
 		};
 
 		public static final int NUM_COLUMNS = 2;
@@ -189,10 +211,10 @@ public final class ConfigUtil {
 		 *  此值通过img的值计算img*2+40
 		 */
 		public static final int MIN_WIDTH = 320;
-		
+
 		public static final int VIEW_LEFT = R.id.item_view_left;
 		public static final int VIEW_BOTTOM = R.id.item_view_bottom;
-		
+
 	}
 
 	/**
@@ -246,16 +268,20 @@ public final class ConfigUtil {
 				,R.id.item_user_dizhi
 				,R.id.item_user_num
 				,R.id.item_user_state
+				,R.id.item_user_sex
+				,R.id.item_user_reason
 		};
 		public static final String ITEM_ARR[] = {
 				"name"
 				,"address"
 				,"total_num"
 				,"property"
+				,"msex"
+				,"reason"
 		};
 		public static final String KEY = "id";
 	}
-	
+
 	/**
 	 * item spinner的配置参数
 	 * @author macos
@@ -265,7 +291,7 @@ public final class ConfigUtil {
 		public static final int LAYOUT_ID = R.layout.item_spinner;
 		public static final int TEXTVIEW_ID = R.id.item_sp_tv;
 	}
-	
+
 	/**
 	 * item Dynamiclistview的配置参数
 	 * @author macos
@@ -275,7 +301,7 @@ public final class ConfigUtil {
 		public static final int LAYOUT_ID = R.layout.item_dynamiclistview;
 		public static final int LISTVIEW_ID = R.id.item_dylistview;
 	}
-	
+
 	/**
 	 * json解析参数
 	 * @author macos
@@ -293,7 +319,7 @@ public final class ConfigUtil {
 				,"family_type"
 		};
 	}
-	
+
 	/**
 	 * 政策资讯参数
 	 * @author macos
@@ -313,7 +339,7 @@ public final class ConfigUtil {
 		};
 		public static final String KEY = "id";
 	}
-	
+
 	/**
 	 * 政策资讯参数
 	 * @author macos
@@ -345,5 +371,5 @@ public final class ConfigUtil {
 		};
 		public static final int BUTTON_ID = R.id.ac_login_bt;
 	}
-	
+
 }

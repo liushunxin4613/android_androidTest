@@ -4,6 +4,7 @@
     <!-- <color name="immersionColor">#DD338BD7</color> -->
     <!-- <color name="immersionColor">#DD2382EC</color> -->
     <color name="immersionColor">#DE2910</color>
+    <color name="immersionColor_bg">#DD2382EC</color>
     <color name="immersionColor_press">#48ADD7</color>
     
     <color name="home_item_bg">#88E5F1F3</color>
@@ -56,5 +57,17 @@
     
     <color name="textview">#979797</color>
     <color name="view_press">#ebebeb</color>
+    
+    <!-- Gridview color -->
+    <color name="gridview_color0">#fa3714</color>
+    <color name="gridview_color1">#37b2a6</color>
+    <color name="gridview_color2">#fc7c33</color>
+    <color name="gridview_color3">#2b2c54</color>
+    <color name="gridview_color4">#447fde</color>
+    <color name="gridview_color5">#fa6a68</color>
+    <color name="gridview_color6">#f1a30f</color>
+    <color name="gridview_color7">#d11913</color>
+    <color name="gridview_color8">#25b5f2</color>
+    <color name="gridview_color9">#23c66a</color>
 
 </resources>
