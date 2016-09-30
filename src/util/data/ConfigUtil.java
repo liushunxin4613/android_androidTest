@@ -64,7 +64,7 @@ public final class ConfigUtil {
 		public static final String IP_ADD1 = "192.168.1.198:90";
 		public static final String IP_ADD2 = "www.momo55.com:8000";
 		public static final String WITH_URL = "http://";
-		public static final String IP_URL = WITH_URL + IP_ADD1;
+		public static final String IP_URL = WITH_URL + IP_ADD2;
 		public static final String DOMAIN_URL = IP_URL + "/v1";
 		public static final String BASE_INFO_URL = DOMAIN_URL + "/baseinfo";
 		public static final String AREA_URL = DOMAIN_URL + "/area";
