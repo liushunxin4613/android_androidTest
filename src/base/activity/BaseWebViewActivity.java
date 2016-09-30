@@ -1,5 +1,7 @@
 package base.activity;
 
+import com.leo.androidtest.R;
+
 import android.os.Bundle;
 import android.view.KeyEvent;
 import base.webview.BaseWebView;
@@ -17,8 +19,8 @@ public abstract class BaseWebViewActivity extends BaseActionBarCenterActivity {
 	
 	@Override
 	public void initRootView() {
-		webView = new BaseWebView(this);
-		setContentView(webView);
+		setContentView(R.layout.item_webview);
+		webView = (BaseWebView) findViewById(R.id.item_webview_wv);
 	}
 	
 

@@ -3,17 +3,29 @@ package base.webview;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
+import android.util.AttributeSet;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import util.AppUtil;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class BaseWebView extends WebView {
 
-	protected Context context;
+	private Context context;
 	
 	public BaseWebView(Context context) {
 		super(context);
+		this.context = context;
+	}
+	
+	public BaseWebView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		this.context = context;
+	}
+
+	public BaseWebView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
 		this.context = context;
 	}
 
@@ -38,6 +50,9 @@ public class BaseWebView extends WebView {
 		settings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
 		settings.setDomStorageEnabled(true);
+		
+		String ua = getSettings().getUserAgentString();
+		getSettings().setUserAgentString(ua+"; FishOS /"+ AppUtil.getVersionName(context));
 	}
 	
 	

@@ -38,8 +38,8 @@ public class FlashActivity extends BaseActivity implements OnTime,ToReceive{
 	public void onTime() {
 		if (!is) {
 			startActivity(new Intent(this, LoginActivity.class));
+			finish();
 		}
-		finish();
 	}
 	
 	@Override
@@ -64,8 +64,10 @@ public class FlashActivity extends BaseActivity implements OnTime,ToReceive{
 		if (action.equals(ACTION_STRAT_SUCCESS)) {
 			is = true;
 			startActivity(new Intent(this, MainActivity.class));
+			finish();
 		}else if (action.equals(ACTION_STRAT_ERROR)) {
 			startActivity(new Intent(this, LoginActivity.class));
+			finish();
 		}
 	}
 

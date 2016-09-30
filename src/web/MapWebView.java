@@ -3,6 +3,7 @@ package web;
 import activity.FupinDataActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.AttributeSet;
 import android.util.Log;
 import base.webview.BaseWebView;
 import util.data.ConfigUtil.HttpConfig;
@@ -11,10 +12,23 @@ public class MapWebView extends BaseWebView {
 
 	public static final String TAG = "MapWebView";
 
+	private Context context;
+	
 	public MapWebView(Context context) {
 		super(context);
+		this.context = context;
 	}
 
+	public MapWebView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		this.context = context;
+	}
+
+	public MapWebView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		this.context = context;
+	}
+	
 	@Override
 	public void loadUrl(String url) {
 		Log.i(TAG,"loadUrl...");
