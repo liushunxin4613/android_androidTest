@@ -13,6 +13,7 @@
     <dimen name="view_margin_mid">16dp</dimen>
     <dimen name="view_margin_small">10dp</dimen>
     <dimen name="view_margin_less">4dp</dimen>
+    <dimen name="view_margin_3">3dp</dimen>
     <dimen name="view_margin_1">1dp</dimen>
     <dimen name="actionbar_margin_less">2dp</dimen>
     <dimen name="view_margin">16dp</dimen>

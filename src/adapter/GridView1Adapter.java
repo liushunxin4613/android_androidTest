@@ -17,7 +17,7 @@ public class GridView1Adapter extends BaseRootAdapter<GridViewInfo> {
 
 	private int fromArrId[];
 	
-	private int pad = 10;
+	private int pad = 6;
 	
 	private int minImgWidth = 96;
 	

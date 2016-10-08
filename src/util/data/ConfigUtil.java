@@ -171,7 +171,7 @@ public final class ConfigUtil {
 				,R.drawable.icon_notice
 				,R.drawable.icon_zhence
 				,R.drawable.icon_lvyou
-				,R.drawable.icon_techan
+				,R.drawable.icon_shop
 		};
 
 		//gridview icon text
