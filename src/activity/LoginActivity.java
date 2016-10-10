@@ -47,15 +47,12 @@ public class LoginActivity extends BaseImmersionActivity implements OnClickListe
 		
 	}
 	
-	private VolleyUtil util;
-	
 	@Override
 	public void initData() {
 		
 		usernameEt.setText(DataUtil.getInfo(this, DataUtil.ROOT_SHAREPREFERENCE_USER_INFO, KeyConfig.USERNAME));
 		
-		util = new VolleyUtil(this);
-		util.setMessageListener(this);
+		getVolleyUtil().setMessageListener(this);
 	}
 	
 	private final int INDEX_WHAT0 = 0;
@@ -66,7 +63,7 @@ public class LoginActivity extends BaseImmersionActivity implements OnClickListe
 				Map<String, String> map = new HashMap<String, String>();
 				map.put(KeyConfig.USERNAME, usernameEt.getText().toString());
 				map.put(KeyConfig.PWD, pwdEt.getText().toString());
-				util.setStringPost(INDEX_WHAT0, HttpConfig.USER_JSON_URI, map);
+				getVolleyUtil().setStringPost(INDEX_WHAT0, HttpConfig.USER_JSON_URI, map);
 			}
 		}
 	}

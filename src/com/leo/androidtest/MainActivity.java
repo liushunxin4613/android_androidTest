@@ -6,7 +6,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import activity.FupinDataActivity;
-import activity.LoginActivity;
+import activity.SearchViewWebActivity;
+import activity.SettingActivity;
 import adapter.GridView1Adapter;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -25,7 +26,6 @@ import util.data.ConfigUtil.HttpConfig;
 import util.data.ConfigUtil.MainActivityConfig;
 import web.MapWebActivity;
 import web.WebActivity;
-import util.data.DataUtil;
 
 public class MainActivity extends BaseActionBarTitleCenterActivity implements OnItemClickListener{
 
@@ -43,12 +43,8 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.setting0://账户信息
-			startActivity(new Intent(this, LoginActivity.class));
-			break;
-		case R.id.setting1://退出登录
-			DataUtil.cleanInfo(this);//清除数据
-			super.onBackPressed();
+		case R.id.menu_main_setting://账户信息
+			startActivity(new Intent(this, SettingActivity.class));
 			break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -150,12 +146,12 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.ANALYSIS_URL);
 			break;
 		case 6://Notice
-			intent.setClass(this, WebActivity.class);
+			intent.setClass(this, SearchViewWebActivity.class);
 			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_6));
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.NOTICE_LIST_URL);
 			break;
 		case 7://Policy
-			intent.setClass(this, WebActivity.class);
+			intent.setClass(this, SearchViewWebActivity.class);
 			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_7));
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.NEWS_LIST_URL);
 			break;
@@ -164,11 +160,11 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_8));
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.TICKET_URL);
 			break;
-		case 9://Policy
-			intent.setClass(this, WebActivity.class);
-			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_9));
-			intent.putExtra(WebActivity.KEY_URL, HttpConfig.SHOP_URL);
-			break;
+//		case 9://Policy
+//			intent.setClass(this, WebActivity.class);
+//			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_9));
+//			intent.putExtra(WebActivity.KEY_URL, HttpConfig.SHOP_URL);
+//			break;
 		}
 		startActivity(intent);
 	}

@@ -10,9 +10,12 @@ public class WebActivity extends BaseWebViewActivity {
 	public static final String KEY_TITLE = "title";
 	public static final String KEY_URL = "url";
 	
+	protected String url;
+	
 	@Override
 	public String getUriStr() {
-		return getIntent().getStringExtra(KEY_URL);
+		url = getIntent().getStringExtra(KEY_URL);
+		return url;
 	}
 
 	@Override

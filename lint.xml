@@ -59,6 +59,7 @@
         <ignore path="res/layout/item_spinner.xml" />
     </issue>
     <issue id="UselessParent">
+        <ignore path="res/layout/activity_setting.xml" />
         <ignore path="res/layout/include_spinner_listview.xml" />
         <ignore path="res/layout/item_gridview1.xml" />
         <ignore path="res/layout/item_spinner.xml" />

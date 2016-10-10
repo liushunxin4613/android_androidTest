@@ -38,7 +38,11 @@
     </permission> <!-- 替换为第三方应用的包名 -->
     <!-- 个推SDK权限配置结束 -->
 
+	<!-- 清除进程权限 -->
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/app_logo"
@@ -55,6 +59,7 @@
             android:theme="@style/AppThemeNoActionbar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -91,12 +96,22 @@
         <activity android:name="activity.PolicyDetailActivity" >
         </activity>
         <activity
+            android:name="activity.SettingActivity"
+            android:label="@string/ac_gridview_10" >
+        </activity>
+        <activity
+            android:name="activity.AboutActivity"
+            android:label="@string/action_about" >
+        </activity>
+        <activity
             android:name="activity.FupinDetailActivity"
             android:label="@string/ac_gridview_2_1" >
         </activity>
         <activity android:name="web.WebActivity" >
         </activity>
         <activity android:name="web.MapWebActivity" >
+        </activity>
+        <activity android:name="activity.SearchViewWebActivity" >
         </activity>
 
         <!-- 个推SDK配置开始 -->
@@ -118,6 +133,7 @@
             android:name="receiver.PushReceiver"
             android:exported="true" >
             <intent-filter>
+
                 <!-- APPID需要替换为相应的个推应用ID -->
                 <action android:name="com.igexin.sdk.action.t7VFxLiRGw95B5U7eJ0Fv9" />
             </intent-filter>

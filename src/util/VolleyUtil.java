@@ -61,8 +61,11 @@ public class VolleyUtil {
 	public VolleyUtil(Context context) {
 		mQueue = Volley.newRequestQueue(context);
 		factory = new DialogFactory();
-		LoadingDialog dialog = (LoadingDialog) factory.newLoadingDialog(context, null);
 		tagSetIndex = new HashSet<Integer>();
+	}
+	
+	public void openDialog(Context context){
+		LoadingDialog dialog = (LoadingDialog) factory.newLoadingDialog(context, null);
 		dialog.setOnBackPressedListener(new OnBackPressedLisener() {
 			@Override
 			public void onBackPressed() {

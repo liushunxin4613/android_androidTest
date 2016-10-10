@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/item_style"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeightSmall" >
+    
+    <TextView
+        android:id="@+id/include_tv_tv"
+        style="@style/publish_item_title_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/view_margin_less"
+        android:layout_marginStart="@dimen/view_margin_less" />
+    
+</RelativeLayout>

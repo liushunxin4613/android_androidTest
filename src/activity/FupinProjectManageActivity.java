@@ -14,7 +14,6 @@ import base.activity.BaseDynamiclistviewActivity;
 import customLib.DynamicListView;
 import customLib.DynamicListView.LoadMoreListener;
 import customLib.DynamicListView.RefreshListener;
-import util.VolleyUtil;
 import util.VolleyUtil.OnVolleyResponseListener;
 import util.data.ConfigUtil.FupinProjectActivityConfig;
 import util.data.ConfigUtil.HttpConfig;
@@ -27,13 +26,13 @@ import util.data.ConfigUtil.JsonDataConfig;
  */
 public class FupinProjectManageActivity extends BaseDynamiclistviewActivity implements OnItemClickListener,RefreshListener,LoadMoreListener,OnVolleyResponseListener{
 
-	private VolleyUtil util;
+	private final int INIT_WHAT = 0x123;
 	
 	@Override
 	public void initData() {
-		util = new VolleyUtil(this);
-		util.setResponseListener(this);
-		util.setJSONObject(INIT_WHAT,HttpConfig.PROJECT_LIST_URL + HttpConfig.CALLBACK_JSON);
+		getVolleyUtil().openDialog(this);
+		getVolleyUtil().setResponseListener(this);
+		getVolleyUtil().setJSONObject(INIT_WHAT,HttpConfig.PROJECT_LIST_URL + HttpConfig.CALLBACK_JSON);
 	}
 
 	@Override
@@ -63,14 +62,14 @@ public class FupinProjectManageActivity extends BaseDynamiclistviewActivity impl
 
 	@Override
 	public boolean onRefresh(DynamicListView dynamicListView) {
-		util.setJSONObject(REFRESH_WHAT, HttpConfig.PROJECT_LIST_URL + HttpConfig.CALLBACK_JSON);
+		getVolleyUtil().setJSONObject(REFRESH_WHAT, HttpConfig.PROJECT_LIST_URL + HttpConfig.CALLBACK_JSON);
 		return false;
 	}
 
 	@Override
 	public boolean onLoadMore(DynamicListView dynamicListView) {
 		if (adapter.getCount() % JsonDataConfig.LIST_NUM == 0) {
-			util.setJSONObject(LOADMORE_WHAT, HttpConfig.PROJECT_LIST_URL + HttpConfig.CALLBACK_JSON + HttpConfig.LIST_NEXT_URL + (adapter.getCount() / JsonDataConfig.LIST_NUM + 1));
+			getVolleyUtil().setJSONObject(LOADMORE_WHAT, HttpConfig.PROJECT_LIST_URL + HttpConfig.CALLBACK_JSON + HttpConfig.LIST_NEXT_URL + (adapter.getCount() / JsonDataConfig.LIST_NUM + 1));
 		}else {
 			listview.setOnMoreListener(null);
 			return true;

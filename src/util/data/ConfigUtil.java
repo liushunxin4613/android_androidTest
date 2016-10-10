@@ -74,6 +74,7 @@ public final class ConfigUtil {
 		public static final String NOTICE_DETAIL_WITH_URL = DOMAIN_URL + "/notice/";
 		public static final String MAP_DETAIL_URL = DOMAIN_URL + "/map";
 		public static final String USER_JSON_URI = DOMAIN_URL + "/user/login";
+		public static final String ABOUT_URI = DOMAIN_URL + "/about";
 
 		public static final String NEWS_LIST_URL = DOMAIN_URL + "/news/list";
 		public static final String NEWS_DETAIL_WITH_URL = DOMAIN_URL + "/news/";
@@ -371,5 +372,49 @@ public final class ConfigUtil {
 		};
 		public static final int BUTTON_ID = R.id.ac_login_bt;
 	}
-
+	
+	/**
+	 * include ÅäÖÃ
+	 * @author Administrator
+	 *
+	 */
+	public static final class IncludeConfig{
+		//>>>>>>>>>>>>>>>>>>>>nextTv
+		public static final int NEXT_TV_LAYOUT_ID = R.layout.include_next_textview;
+		
+		public static final int NEXT_TV_TV_ARR_ID[] = {
+			R.id.include_next_tv_tv0
+			,R.id.include_next_tv_tv1
+		};
+		
+		//>>>>>>>>>>>>>>>>>>>>>>spListView
+		public static final int SPINNER_LISTVIEW_LAYOUT_ID = R.layout.include_spinner_listview;
+		
+		public static final int SPINNER_LISTVIEW_SP_ARR_ID[] = {
+			R.id.splv_sp0
+			,R.id.splv_sp1
+			,R.id.splv_sp2
+		};
+		
+		public static final int SPINNER_LISTVIEW_DYLISTVIEW_ID = R.id.splv_dylistview;
+		
+		//>>>>>>>>>>>>>>>>>>>>>>Tv
+		public static final int TV_LAYOUT_ID = R.layout.include_textview;
+		
+		public static final int TV_TV_ID = R.id.include_tv_tv;
+		
+	}
+	
+	
+	/**
+	 * setting activity config
+	 */
+	public static final class SettingActivityConfig{
+		public static final int LAYOUT_ID = R.layout.activity_setting;
+		
+		public static final int INCLUDE_NEXT_ID = R.id.ac_setting_next;
+		public static final int INCLUDE_TV_ID = R.id.ac_setting_tv;
+		
+	}
+	
 }
