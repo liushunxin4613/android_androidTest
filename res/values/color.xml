@@ -70,6 +70,17 @@
     <color name="gridview_color8">#81C48F</color>
     <color name="gridview_color9">#47C9AF</color>
     
+    <color name="gridview_color0_bg">#EC5657</color>
+    <color name="gridview_color1_bg">#71B47F</color>
+    <color name="gridview_color2_bg">#0799CA</color>
+    <color name="gridview_color3_bg">#C4864B</color>
+    <color name="gridview_color4_bg">#3FA6D1</color>
+    <color name="gridview_color5_bg">#37B98F</color>
+    <color name="gridview_color6_bg">#3FA6D1</color>
+    <color name="gridview_color7_bg">#D6A151</color>
+    <color name="gridview_color8_bg">#71B47F</color>
+    <color name="gridview_color9_bg">#37B99F</color>
+    
     <!-- type -->
     <color name="type_color0">#2C99EE</color>
     <color name="type_color1">#FF8400</color>

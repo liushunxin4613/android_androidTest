@@ -165,6 +165,18 @@ public final class ConfigUtil {
 			,R.color.gridview_color8
 			,R.color.gridview_color9
 		};
+		public static final int GRIDVIEW_COLOR_DW_ARR[] = {
+			R.drawable.griodview_selector0
+			,R.drawable.griodview_selector1
+			,R.drawable.griodview_selector2
+			,R.drawable.griodview_selector3
+			,R.drawable.griodview_selector4
+			,R.drawable.griodview_selector5
+			,R.drawable.griodview_selector6
+			,R.drawable.griodview_selector7
+			,R.drawable.griodview_selector8
+			,R.drawable.griodview_selector9
+		};
 
 		public static final int LAYOUT_ID = R.layout.item_gridview2;
 

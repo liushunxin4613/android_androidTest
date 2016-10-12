@@ -10,10 +10,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -46,25 +44,12 @@ public class MyGridView {
 
 		for (int i = 0; i < layout.length; i++) {
 			layout[i] = (LinearLayout) view.findViewById(GridView2Config.INCLUDE_ARR_ID[i]);
-			layout[i].setBackgroundColor(context.getResources()
-					.getColor(GridView2Config.GRIDVIEW_COLOR_ARR[i]));
 			
 			layout[i].setId(i);
 			
-			layout[i].setOnTouchListener(new OnTouchListener(){    
-				@Override   
-				public boolean onTouch(View v, MotionEvent event) { 
-					if(event.getAction() == MotionEvent.ACTION_DOWN){    
-						//更改为按下时的背景图片 
-						v.getBackground().setAlpha(0xB0);
-					}else if(event.getAction() == MotionEvent.ACTION_UP){    
-						//改为抬起时的图片
-						v.getBackground().setAlpha(0xFF);
-						listener.onClick(v);
-					}    
-					return true;    
-				}
-			});
+			layout[i].setClickable(true);
+			layout[i].setBackgroundResource(GridView2Config.GRIDVIEW_COLOR_DW_ARR[i]);
+			layout[i].setOnClickListener(listener);
 			
 		}
 		
