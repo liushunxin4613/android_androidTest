@@ -8,6 +8,9 @@
         <ignore path="res/layout/item_spinner.xml" />
         <ignore path="res/layout/item_user.xml" />
     </issue>
+    <issue id="DisableBaselineAlignment">
+        <ignore path="res/layout/item_gridview2.xml" />
+    </issue>
     <issue id="ExportedContentProvider">
         <ignore path="AndroidManifest.xml" />
     </issue>
@@ -20,10 +23,18 @@
     <issue id="HandlerLeak">
         <ignore path="src/dialog/DialogFactory.java" />
     </issue>
+    <issue id="HardcodedText">
+        <ignore path="res/layout/item_user1.xml" />
+        <ignore path="res/layout/item_user1.xml" />
+    </issue>
+    <issue id="NestedWeights">
+        <ignore path="res/layout/item_gridview2.xml" />
+    </issue>
     <issue id="OldTargetApi">
         <ignore path="AndroidManifest.xml" />
     </issue>
     <issue id="Orientation">
+        <ignore path="res/layout/activity_main.xml" />
         <ignore path="res/layout/item_home_layout.xml" />
     </issue>
     <issue id="PxUsage">

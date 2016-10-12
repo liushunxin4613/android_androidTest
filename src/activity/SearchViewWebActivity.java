@@ -1,5 +1,8 @@
 package activity;
 
+import util.data.ConfigUtil.ApplicationConfig;
+import util.data.ConfigUtil.KeyConfig;
+import util.data.DataUtil;
 import web.WebActivity;
 
 import com.leo.androidtest.R;
@@ -16,6 +19,11 @@ public class SearchViewWebActivity extends WebActivity {
 
 	private DySearchView searchView;
 
+	@Override
+	public void initView() {
+		super.initView();
+	}
+	
 	/**
 	 * ËÑË÷²Ù×÷
 	 * @param queryStr
@@ -28,14 +36,18 @@ public class SearchViewWebActivity extends WebActivity {
 			} else {
 				qur = url + "?keyword=" + queryStr;
 			}
+			Log.i(TAG,"qur = " + qur);
 			webView.loadUrl(qur);
 		}
 	}
 
+	private Menu menu;
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.part_time, menu);
-
+		this.menu = menu;
+		
 		searchView = (DySearchView)MenuItemCompat.getActionView(
 				menu.findItem(R.id.menu_dysearch));
 
@@ -75,6 +87,37 @@ public class SearchViewWebActivity extends WebActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	protected void initListener() {
+		webView.setOnFinishedListener(this);
+	}
+	
+	@Override
+	public void onFinishedListener(String url) {
+		Log.i(TAG, "onFinishedListener:url" + url);
+		if (url.contains("show")) {
+			String textSize = DataUtil.getInfo(this, DataUtil.ROOT_SETTING, KeyConfig.TEXTSIZE_STRING);
+			if (textSize == null) {
+				textSize = "1";
+			}
+			Log.i(TAG, "textSize = " + textSize);
+			
+			webView.loadUrl("javascript:setFontSize("+ 
+					ApplicationConfig.TEXTSIZE_VALUE[Integer.parseInt(textSize)] +")");
+		}
+		
+		if(menu == null) return;
+		if(url.contains("list")){
+			for (int i = 0; i < menu.size(); i++) {
+				menu.getItem(i).setVisible(true);
+			}
+		}else {
+			for (int i = 0; i < menu.size(); i++) {
+				menu.getItem(i).setVisible(false);
+			}
+		}
 	}
 
 }

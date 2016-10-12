@@ -1,5 +1,7 @@
 package base.activity;
 
+import inter.OnFinishedListener;
+
 import com.leo.androidtest.R;
 
 import android.os.Bundle;
@@ -9,7 +11,7 @@ import base.webview.BaseWebView;
 /**
  * webview ∏∏¿‡
  */
-public abstract class BaseWebViewActivity extends BaseActionBarCenterActivity {
+public abstract class BaseWebViewActivity extends BaseActionBarCenterActivity implements OnFinishedListener {
 
 	protected BaseWebView webView;
 	private String uriStr;
@@ -22,16 +24,27 @@ public abstract class BaseWebViewActivity extends BaseActionBarCenterActivity {
 		setContentView(R.layout.item_webview);
 		webView = (BaseWebView) findViewById(R.id.item_webview_wv);
 	}
-	
 
 	@Override
 	public void initView() {
 		super.initView();
 		uriStr = getUriStr();
 		webView.initWebView();
+		webView.loadData("", "text/html", "UTF-8");
+		initListener();
 		webView.loadUrl(uriStr);
 	}
+	
+	/**
+	 * ≥ı ºªØº‡Ã˝
+	 */
+	protected void initListener(){	
+	}
 
+	@Override
+	public void onFinishedListener(String url) {
+	}
+	
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
@@ -89,17 +102,18 @@ public abstract class BaseWebViewActivity extends BaseActionBarCenterActivity {
 		return false;
 	}
 
+	
 	@Override  
 	public void onBackPressed() {
 		if(webView != null) {  
-			if(webView.canGoBack()){  
+			if(webView.canGoBack()){
 				webView.goBack();
 				return;
 			}
 		}
 		if (!goBackMain()) {
-			super.onBackPressed();
 			finish();
+			super.onBackPressed();
 		}
 	} 
 

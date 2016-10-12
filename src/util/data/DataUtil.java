@@ -25,6 +25,7 @@ public class DataUtil {
 
 	public static final String ROOT_SHAREPREFERENCE_USER_INFO = "user_info";
 	public static final String ROOT_ADDRESS = "address";
+	public static final String ROOT_SETTING = "setting";
 
 	public static final String EDITOR_USER_USERNAME = "userUsername";
 	public static final String EDITOR_USER_PWD = "userPwd";
@@ -142,9 +143,9 @@ public class DataUtil {
 		return map;
 	}
 
-	public static void cleanInfo(Context context){
+	public static void cleanInfo(Context context,String root){
 		SharedPreferences sharedPre = context.getSharedPreferences(
-				ROOT_SHAREPREFERENCE_USER_INFO, Activity.MODE_PRIVATE);
+				root, Activity.MODE_PRIVATE);
 		SharedPreferences.Editor editor = sharedPre.edit();
 		editor.clear();
 		editor.commit();

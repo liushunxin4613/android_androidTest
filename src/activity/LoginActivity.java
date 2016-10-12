@@ -26,7 +26,7 @@ import util.data.DataUtil;
 public class LoginActivity extends BaseImmersionActivity implements OnClickListener, OnVolleyMessageListener {
 
 	@Override
-	public int getRootViewId() {
+	public Integer getRootViewId() {
 		return LoginActivityConfig.LAYOUT_ID;
 	}
 	

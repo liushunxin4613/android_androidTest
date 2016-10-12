@@ -27,4 +27,17 @@
         <item>住址:</item>
     </string-array>
     
+    <string-array name="textsize_key">
+        <item>小号</item>
+        <item>中号</item>
+        <item>大号</item>
+        <item>特大</item>
+    </string-array>
+    
+    <string-array name="type_fupin">
+        <item>绝对贫困农户</item>
+        <item>相对贫困农户</item>
+        <item>低收入农户</item>
+    </string-array>
+    
 </resources>

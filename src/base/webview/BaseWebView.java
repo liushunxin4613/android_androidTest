@@ -1,5 +1,7 @@
 package base.webview;
 
+import inter.OnFinishedListener;
+import inter.OnLoadListener;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
@@ -13,12 +15,23 @@ import util.AppUtil;
 public class BaseWebView extends WebView {
 
 	private Context context;
+	private BaseWebViewClient webViewClient;
 	
+	private OnLoadListener listener;
+
+	public void setOnFinishedListener(OnFinishedListener listener) {
+		webViewClient.setOnFinishedListener(listener);
+	}
+	
+	public void setOnLoadListener(OnLoadListener listener) {
+		this.listener = listener;
+	}
+
 	public BaseWebView(Context context) {
 		super(context);
 		this.context = context;
 	}
-	
+
 	public BaseWebView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.context = context;
@@ -31,9 +44,10 @@ public class BaseWebView extends WebView {
 
 	public void initWebView(){
 		setWebViewSetting();
-		setWebViewClient(new BaseWebViewClient(context));
+		webViewClient = new BaseWebViewClient(context);
+		setWebViewClient(webViewClient);
 	}
-	
+
 	public void setWebViewSetting(){
 		WebSettings settings = getSettings();
 
@@ -50,10 +64,20 @@ public class BaseWebView extends WebView {
 		settings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
 		settings.setDomStorageEnabled(true);
-		
+
+		settings.setSupportZoom(true);//…Ë÷√Àı∑≈
+
 		String ua = getSettings().getUserAgentString();
 		getSettings().setUserAgentString(ua+"; FishOS /"+ AppUtil.getVersionName(context));
 	}
 	
-	
+	@Override
+	public void loadUrl(String url) {
+		if (listener != null) {
+			listener.loadUrlStart(url);
+		}
+		super.loadUrl(url);
+	}
+
+
 }

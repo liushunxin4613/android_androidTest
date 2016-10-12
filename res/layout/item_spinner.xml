@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/item_sp_tv"
-            style="@style/textview_item"
+            style="@style/textview_text_item1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

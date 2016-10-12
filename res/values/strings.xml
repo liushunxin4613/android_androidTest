@@ -7,6 +7,7 @@
     <!-- 设置 -->
     <string name="action_setting">设 置</string>
     <string name="action_about">关于我们</string>
+    <string name="action_textsize_setting">设置字体</string>
     <string name="main_exit_remind">再按一次退出</string>
     <string name="action_exit_login">退出登录</string>
     <string name="dialog_loading_title">正在加载中&#8230;</string>
@@ -14,14 +15,14 @@
     <!-- MainActivity -->
 
 	<string name="ac_gridview_0">基础信息</string>
-	<string name="ac_gridview_1">扶贫管理</string>
-	<string name="ac_gridview_2">扶贫大数据</string>
-	<string name="ac_gridview_3">电子地图</string>
-	<string name="ac_gridview_4">扶贫考核</string>
-	<string name="ac_gridview_5">统计分析</string>
-	<string name="ac_gridview_6">惠农信息</string>
-	<string name="ac_gridview_7">政策资讯</string>
-	<string name="ac_gridview_8">特色旅游</string>
+	<string name="ac_gridview_1">扶贫大数据</string>
+	<string name="ac_gridview_2">统计分析</string>
+	<string name="ac_gridview_3">政策资讯</string>
+	<string name="ac_gridview_4">特色旅游</string>
+	<string name="ac_gridview_5">扶贫项目管理</string>
+	<string name="ac_gridview_6">电子地图</string>
+	<string name="ac_gridview_7">扶贫考核</string>
+	<string name="ac_gridview_8">惠农信息</string>
 	<string name="ac_gridview_9">惠农特产</string>
 	<string name="ac_gridview_10">设置</string>
 	
@@ -66,4 +67,12 @@
 	<string name="action_search">搜索</string>
     <string name="hint_search">输入关键字</string>
 
+     <!-- dialog -->
+    <string name="dialog_sure">确定</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_textsize_title">请选择字体大小</string>
+    <string name="text_phone">电话:</string>
+    <string name="text_chengyuan0">成员:</string>
+    <string name="text_chengyuan1">人</string>
+    
 </resources>

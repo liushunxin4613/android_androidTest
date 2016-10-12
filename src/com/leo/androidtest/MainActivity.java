@@ -1,36 +1,36 @@
 package com.leo.androidtest;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import activity.FupinDataActivity;
 import activity.SearchViewWebActivity;
 import activity.SettingActivity;
-import adapter.GridView1Adapter;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import base.activity.BaseActionBarTitleCenterActivity;
 import android.widget.ScrollView;
 import android.widget.Toast;
-import customLib.ExpandGridView;
-import entity.GridViewInfo;
+import util.data.ConfigUtil.ApplicationConfig;
 import util.data.ConfigUtil.GridView1Config;
 import util.data.ConfigUtil.HttpConfig;
+import util.data.ConfigUtil.KeyConfig;
 import util.data.ConfigUtil.MainActivityConfig;
+import util.data.DataUtil;
+import util.ui.MyGridView;
 import web.MapWebActivity;
 import web.WebActivity;
 
-public class MainActivity extends BaseActionBarTitleCenterActivity implements OnItemClickListener{
+public class MainActivity extends BaseActionBarTitleCenterActivity implements OnClickListener{
 
 	@Override
-	public int getRootViewId() {
+	public Integer getRootViewId() {
 		return MainActivityConfig.LAYOUT_ID;
 	}
 
@@ -50,17 +50,6 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 		return super.onOptionsItemSelected(item);
 	}
 
-	//GridView
-	private ExpandGridView gridView;
-	private GridView1Adapter gridViewAdapter;
-	private List<GridViewInfo> gridViewData; 
-
-	private int iconArr[];
-	private int textArr[];
-	private int colorArr[];
-
-	private int numColumns;
-
 	private ScrollView scrollView;
 
 	@SuppressLint("ResourceAsColor")
@@ -71,39 +60,17 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 		scrollView = (ScrollView) findViewById(GridView1Config.SCROLLVIEW_LAYOUT_ID);
 
 		//GridView
-		gridView = (ExpandGridView) findViewById(GridView1Config.GRIDVIEW_ID);
-
-		iconArr = GridView1Config.GRIDVIEW_ICON_ARRID;
-		textArr = GridView1Config.GRIDVIEW_TEXT_ARRID;
-		colorArr = GridView1Config.GRIDVIEW_COLOR_ARR;
-
-		//
-		gridViewData = new ArrayList<GridViewInfo>();
-		for (int i = 0; i < iconArr.length; i++) {
-			GridViewInfo info = new GridViewInfo(textArr[i], colorArr[i], iconArr[i]);
-			gridViewData.add(info);
-		}
+		LinearLayout layout = (LinearLayout) findViewById(GridView1Config.GRIDVIEW_ID);
 		
-		gridViewAdapter = new GridView1Adapter(this, gridViewData, GridView1Config.GRIDVIEW_LAYOUT_ID, GridView1Config.GRIDVIEW_FROM_ARRID);
-		gridView.setAdapter(gridViewAdapter);
-
-		numColumns = GridView1Config.NUM_COLUMNS;
-
-		gridView.setNumColumns(numColumns);
-
-		//设置点击事件
-		gridView.setOnItemClickListener(this);
+		MyGridView gridView = new MyGridView(this,this);
+		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		layout.addView(gridView.initView(), params);
 
 		//初始化在顶部
 		scrollView.smoothScrollTo(0, 0);
 
-		//重设图片高度
-//		ImageView imageView = (ImageView) findViewById(MainActivityConfig.IMG_ID);
-//		LayoutParams lp = (LayoutParams) imageView.getLayoutParams();
-//		lp.height = getDisplayMetrics().heightPixels/4;
-
 	}
-
+	
 	@Override
 	public void initData() {
 		//启动服务队列
@@ -114,62 +81,70 @@ public class MainActivity extends BaseActionBarTitleCenterActivity implements On
 	}
 	
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	public void onClick(View v) {
 		Intent intent = new Intent();
-		switch (position) {
+		switch (v.getId()) {
 		case 0://BaseInfo
 			intent.setClass(this, WebActivity.class);
 			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_0));
-			intent.putExtra(WebActivity.KEY_URL, HttpConfig.BASE_INFO_URL);
+			
+			String textsize = DataUtil.getInfo(this, 
+					DataUtil.ROOT_SETTING, KeyConfig.TEXTSIZE_STRING);	
+			if (textsize == null) {
+				textsize = "1";
+			}
+			int t = ApplicationConfig.TEXTSIZE_VALUE[Integer.parseInt(textsize)];
+			String end = "?fontsize=" + t;
+			
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.BASE_INFO_URL + end);
 			break;
-		case 1://FupinProject
-			intent.setClass(this, WebActivity.class);
-			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_1));
-			intent.putExtra(WebActivity.KEY_URL, HttpConfig.PROJECT_LIST_URL);
-			break;
-		case 2://FupinData
+		case 1://FupinData
 			intent.setClass(this, FupinDataActivity.class);
 			break;
-		case 3://Map
-			intent.setClass(this, MapWebActivity.class);
-			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_3));
-			intent.putExtra(WebActivity.KEY_URL, HttpConfig.MAP_DETAIL_URL);
-			break;
-		case 4://FupinCheck
+		case 2://StatisticsAnalyze
 			intent.setClass(this, WebActivity.class);
-			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_4));
-			intent.putExtra(WebActivity.KEY_URL, HttpConfig.KPI_URL);
-			break;
-		case 5://StatisticsAnalyze
-			intent.setClass(this, WebActivity.class);
-			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_5));
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_2));
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.ANALYSIS_URL);
 			break;
-		case 6://Notice
+		case 3://Policy
 			intent.setClass(this, SearchViewWebActivity.class);
-			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_6));
-			intent.putExtra(WebActivity.KEY_URL, HttpConfig.NOTICE_LIST_URL);
-			break;
-		case 7://Policy
-			intent.setClass(this, SearchViewWebActivity.class);
-			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_7));
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_3));
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.NEWS_LIST_URL);
 			break;
-		case 8://lvyou
+		case 4://lvyou
 			intent.setClass(this, WebActivity.class);
-			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_8));
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_4));
 			intent.putExtra(WebActivity.KEY_URL, HttpConfig.TICKET_URL);
 			break;
-//		case 9://Policy
-//			intent.setClass(this, WebActivity.class);
-//			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_9));
-//			intent.putExtra(WebActivity.KEY_URL, HttpConfig.SHOP_URL);
-//			break;
+		case 5://FupinProject
+			intent.setClass(this, WebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_5));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.PROJECT_LIST_URL);
+			break;
+		case 6://Map
+			intent.setClass(this, MapWebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_6));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.MAP_DETAIL_URL);
+			break;
+		case 7://FupinCheck
+			intent.setClass(this, WebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_7));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.KPI_URL);
+			break;
+		case 8://Notice
+			intent.setClass(this, SearchViewWebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_8));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.NOTICE_LIST_URL);
+			break;
+		case 9://SHOP
+			intent.setClass(this, WebActivity.class);
+			intent.putExtra(WebActivity.KEY_TITLE, getString(R.string.ac_gridview_9));
+			intent.putExtra(WebActivity.KEY_URL, HttpConfig.SHOP_URL);
+			break;
 		}
 		startActivity(intent);
 	}
-
-
+	
 	/**
 	 * 确定退出
 	 */

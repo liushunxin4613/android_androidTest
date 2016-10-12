@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/include_gvst0"
+    style="@style/include_gvst"
+ 	android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gridview_color1" >
+
+    <ImageView
+        android:id="@+id/include_gvst1_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_lvyou"
+        android:contentDescription="@string/image_string" />
+
+    <TextView
+        android:id="@+id/include_gvst1_tv"
+        style="@style/gridview_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/gridview_margin_left"
+        android:text="@string/ac_gridview_1" />
+
+</LinearLayout>

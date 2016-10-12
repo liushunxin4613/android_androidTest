@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="@dimen/margin_10" >
+
+    <RelativeLayout
+        style="@style/linearlayout_h0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/item_user1_username"
+            style="@style/textview_bold_item"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="蒋晴晴" />
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/image_w1"
+            android:layout_height="@dimen/image_h"
+            android:layout_toRightOf="@+id/item_user1_username"
+            android:layout_marginLeft="@dimen/text_margin1"
+            android:background="@drawable/huzhu"
+            android:contentDescription="@string/image_string" />
+        
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/item_user1_type"
+            style="@style/textview_type_item0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一般困难户"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp" />
+        
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/linearlayout_h0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/textview_text_item0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_phone" />
+
+        <TextView
+            android:id="@+id/item_user1_phone"
+            style="@style/textview_text_item0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin0"
+            android:text="13997810046" />
+
+        <TextView
+            style="@style/textview_text_item0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:text="@string/text_chengyuan0" />
+
+        <TextView
+            android:id="@+id/item_user1_num"
+            style="@style/textview_text_item0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin0"
+            android:text="5" />
+
+        <TextView
+            style="@style/textview_text_item0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin0"
+            android:text="@string/text_chengyuan1" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linearlayout_h0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        
+        <ImageView
+            android:layout_width="@dimen/image_w0"
+            android:layout_height="@dimen/image_h"
+            android:background="@drawable/map_2x"
+            android:contentDescription="@string/image_string" />
+        
+        <TextView
+            android:id="@+id/item_user1_address"
+            style="@style/textview_text_item0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin1"
+            android:text="湖北省十堰市人民中路58号" />
+        
+    </LinearLayout>
+
+</LinearLayout>

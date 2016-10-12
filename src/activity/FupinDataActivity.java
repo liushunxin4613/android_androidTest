@@ -45,7 +45,7 @@ import util.data.ConfigUtil.SpinnerListViewConfig;
 public class FupinDataActivity extends BaseSpinnerListViewActivity implements OnVolleyResponseListener{
 
 	@Override
-	public int getRootViewId() {
+	public Integer getRootViewId() {
 		return SpinnerListViewConfig.LAYOUT_ID;
 	}
 
@@ -119,6 +119,7 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 		getVolleyUtil().setResponseListener(this);
 
 		getIntentDataId();
+		
 		getVolleyUtil().setJSONObject(INIT_WHAT, getUrl());//获取初始数据
 	}
 
@@ -126,7 +127,7 @@ public class FupinDataActivity extends BaseSpinnerListViewActivity implements On
 		//获取getIntent()
 		String intentArrStr[] = new String[]{INTENT_ZID,INTENT_CID,INTENT_TID};
 		for (int i = 0; i < intentArrStr.length; i++) {
-			urlMap.put(mapArrType[i], getIntent().getStringExtra(INTENT_ZID));
+			urlMap.put(mapArrType[i], getIntent().getStringExtra(intentArrStr[i]));
 		}
 
 		for (int i = 0; i < zhenList.size(); i++) {

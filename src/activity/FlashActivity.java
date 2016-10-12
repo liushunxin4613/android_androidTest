@@ -16,7 +16,7 @@ import util.delete.TimerUtil.OnTime;;
 public class FlashActivity extends BaseActivity implements OnTime,ToReceive{
 
 	@Override
-	public int getRootViewId() {
+	public Integer getRootViewId() {
 		getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN ,WindowManager.LayoutParams. FLAG_FULLSCREEN);//Òþ²Ø×´Ì¬À¸
 		return FlashActivityConfig.LAYOUT_ID;
 	}

@@ -25,8 +25,8 @@ public class BaseFragmentActivity extends FragmentActivity implements AcFmInterf
 	}
 
 	@Override
-	public int getRootViewId(){
-		return 0;
+	public Integer getRootViewId(){
+		return null;
 	};
 	
 	@Override

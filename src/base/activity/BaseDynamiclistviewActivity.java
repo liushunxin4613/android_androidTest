@@ -17,7 +17,7 @@ import util.data.ConfigUtil.ItemDynamiclistviewConfig;
 public class BaseDynamiclistviewActivity extends BaseActionBarCenterActivity implements OnItemClickListener,RefreshListener,LoadMoreListener,OnVolleyResponseListener{
 
 	@Override
-	public int getRootViewId() {
+	public Integer getRootViewId() {
 		return ItemDynamiclistviewConfig.LAYOUT_ID;
 	}
 

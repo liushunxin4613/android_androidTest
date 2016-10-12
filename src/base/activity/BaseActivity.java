@@ -22,7 +22,7 @@ public class BaseActivity extends Activity implements AcFmInterface{
 		application = (MyApplication) getApplication();
 		TAG = getClass().getName();
 		initRootView();
-		if (getRootViewId() != 0) {
+		if (getRootViewId() != null) {
 			setContentView(getRootViewId());
 		}
 		initView();
@@ -32,14 +32,14 @@ public class BaseActivity extends Activity implements AcFmInterface{
 	public VolleyUtil getVolleyUtil(){
 		return application.getUtil();
 	}
-
+	
 	@Override
 	public void initRootView() {
 	}
 
 	@Override
-	public int getRootViewId() {
-		return 0;
+	public Integer getRootViewId() {
+		return null;
 	}
 
 	@Override

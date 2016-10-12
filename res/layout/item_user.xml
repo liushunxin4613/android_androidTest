@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/item_user_sex"
-            style="@style/textview_item"
+            style="@style/textview_text_item1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"/>
@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@+id/item_user_dizhi"
-            style="@style/textview_item"
+            style="@style/textview_text_item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_10" />
@@ -60,20 +60,20 @@
             android:layout_weight="1" >
 
             <TextView
-                style="@style/textview_item"
+                style="@style/textview_text_item1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tv_with" />
 
             <TextView
                 android:id="@+id/item_user_num"
-                style="@style/textview_item"
+                style="@style/textview_text_item1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_10" />
 
             <TextView
-                style="@style/textview_item"
+                style="@style/textview_text_item1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tv_end" />
@@ -81,7 +81,7 @@
 
         <TextView
             android:id="@+id/item_user_state"
-            style="@style/textview_item"
+            style="@style/textview_text_item1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2" />
@@ -96,7 +96,7 @@
 
         <TextView
             android:id="@+id/item_user_reason"
-            style="@style/textview_item"
+            style="@style/textview_text_item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

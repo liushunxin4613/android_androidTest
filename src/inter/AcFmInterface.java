@@ -11,7 +11,7 @@ public interface AcFmInterface {
 	 * 返回母视图id
 	 * @return
 	 */
-	int getRootViewId();
+	Integer getRootViewId();
 	
 	/**
 	 * 获取母视图后初始化监听

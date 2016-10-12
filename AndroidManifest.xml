@@ -75,23 +75,20 @@
         </activity>
         <activity
             android:name="activity.FupinDataActivity"
-            android:label="@string/ac_gridview_2" >
+            android:label="@string/ac_gridview_1" >
         </activity>
         <activity
-            android:name="activity.FupinProjectManageActivity"
-            android:label="@string/ac_gridview_3" >
+            android:name="activity.FupinProjectManageActivity" >
         </activity>
         <activity android:name="activity.FupinProjectDetailActivity" >
         </activity>
         <activity
-            android:name="activity.NoticeAnnouncementActvity"
-            android:label="@string/ac_gridview_6" >
+            android:name="activity.NoticeAnnouncementActvity" >
         </activity>
         <activity android:name="activity.NoticeDetailActivity" >
         </activity>
         <activity
-            android:name="activity.PolicyMessageActivity"
-            android:label="@string/ac_gridview_7" >
+            android:name="activity.PolicyMessageActivity" >
         </activity>
         <activity android:name="activity.PolicyDetailActivity" >
         </activity>
@@ -112,6 +109,10 @@
         <activity android:name="web.MapWebActivity" >
         </activity>
         <activity android:name="activity.SearchViewWebActivity" >
+        </activity>
+        
+        <!-- 需删除 -->
+        <activity android:name="activity.DeleteActivity" >
         </activity>
 
         <!-- 个推SDK配置开始 -->

@@ -1,5 +1,6 @@
 package base.webview;
 
+import inter.OnFinishedListener;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.webkit.WebView;
@@ -11,6 +12,11 @@ import dialog.LoadingDialog.OnBackPressedLisener;
 public class BaseWebViewClient extends WebViewClient {
 
 	private DialogFactory factory;
+	private OnFinishedListener listener;
+	
+	public void setOnFinishedListener(OnFinishedListener listener) {
+		this.listener = listener;
+	}
 	
 	public BaseWebViewClient(Context context) {
 		factory = new DialogFactory();
@@ -44,8 +50,12 @@ public class BaseWebViewClient extends WebViewClient {
 	public void onPageFinished(WebView view, String url) {//加载后调用
 		factory.dismissDialog();
 		view.setAlpha(1);
-		view.getSettings().setBlockNetworkImage(false); 
+		view.getSettings().setBlockNetworkImage(false);
+		if (listener != null) {
+			listener.onFinishedListener(url);
+		}
 		super.onPageFinished(view, url);
 	}
-
+	
 }
+

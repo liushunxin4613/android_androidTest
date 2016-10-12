@@ -16,14 +16,12 @@
             android:layout_height="wrap_content"
             android:background="@drawable/icon_table" />
 
-        <customLib.ExpandGridView
+        <LinearLayout
             android:id="@+id/ac_main_gridView"
             android:layout_width="match_parent"
-            android:background="@color/white"
             android:layout_height="wrap_content"
-            android:padding="@dimen/view_margin_3">
-        </customLib.ExpandGridView>
-        
+            android:background="@color/white" >
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

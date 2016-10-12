@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        style="@style/include_gv0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <include
+                android:id="@+id/include_gv0_in0"
+                layout="@layout/include_gridview_style0" />
+
+            <include
+                android:id="@+id/include_gv0_in1"
+                layout="@layout/include_gridview_style1" />
+
+            <include
+                android:id="@+id/include_gv0_in2"
+                layout="@layout/include_gridview_style0" />
+
+            <include
+                android:id="@+id/include_gv0_in3"
+                layout="@layout/include_gridview_style1" />
+
+            <include
+                android:id="@+id/include_gv0_in4"
+                layout="@layout/include_gridview_style1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <include
+                android:id="@+id/include_gv0_in5"
+                layout="@layout/include_gridview_style1" />
+
+            <include
+                android:id="@+id/include_gv0_in6"
+                layout="@layout/include_gridview_style1" />
+
+            <include
+                android:id="@+id/include_gv0_in7"
+                layout="@layout/include_gridview_style0" />
+
+            <include
+                android:id="@+id/include_gv0_in8"
+                layout="@layout/include_gridview_style1" />
+
+            <include
+                android:id="@+id/include_gv0_in9"
+                layout="@layout/include_gridview_style0" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

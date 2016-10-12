@@ -59,15 +59,20 @@
     <color name="view_press">#ebebeb</color>
     
     <!-- Gridview color -->
-    <color name="gridview_color0">#fa3714</color>
-    <color name="gridview_color1">#37b2a6</color>
-    <color name="gridview_color2">#fc7c33</color>
-    <color name="gridview_color3">#2b2c54</color>
-    <color name="gridview_color4">#447fde</color>
-    <color name="gridview_color5">#fa6a68</color>
-    <color name="gridview_color6">#f1a30f</color>
-    <color name="gridview_color7">#d11913</color>
-    <color name="gridview_color8">#25b5f2</color>
-    <color name="gridview_color9">#23c66a</color>
+    <color name="gridview_color0">#FC6667</color>
+    <color name="gridview_color1">#81C48F</color>
+    <color name="gridview_color2">#07A9EA</color>
+    <color name="gridview_color3">#D4965B</color>
+    <color name="gridview_color4">#4FB6E1</color>
+    <color name="gridview_color5">#47C9AF</color>
+    <color name="gridview_color6">#4FB6E1</color>
+    <color name="gridview_color7">#E6B161</color>
+    <color name="gridview_color8">#81C48F</color>
+    <color name="gridview_color9">#47C9AF</color>
+    
+    <!-- type -->
+    <color name="type_color0">#2C99EE</color>
+    <color name="type_color1">#FF8400</color>
+    <color name="type_color2">#79DCA3</color>
 
 </resources>

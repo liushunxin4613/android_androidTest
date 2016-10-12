@@ -45,5 +45,25 @@
     <dimen name="text_size_20">20sp</dimen>
     <dimen name="text_size_24">24sp</dimen>
     <dimen name="text_size_36">36sp</dimen>
+    
+    <dimen name="textsize_min">14sp</dimen>
+    <dimen name="textsize_init">16sp</dimen>
+    
+    <!-- user -->
+    <dimen name="image_w0">12dp</dimen>
+    <dimen name="image_w1">32dp</dimen>
+    <dimen name="image_h">16dp</dimen>
+    
+    <dimen name="text_margin0">2dp</dimen>
+    <dimen name="text_margin1">6dp</dimen>
+    
+    <dimen name="type_radius">4dp</dimen>
+    
+    <!-- gridview -->
+    <dimen name="gridview_margin_top">8dp</dimen>
+    <dimen name="gridview_margin_left">8dp</dimen>
+    
+    <!-- 此值需与GridView2Config中的值对应 -->
+    <dimen name="gridview_margin">2dp</dimen>
 
 </resources>
