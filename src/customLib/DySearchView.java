@@ -292,7 +292,7 @@ public class DySearchView extends SearchView {
 				field = clazz.getDeclaredField(fieldName);
 				return field;
 			} catch (Exception e) {
-				e.printStackTrace();
+				Log.d(TAG, e.getMessage());
 			}
 		}
 		return null;

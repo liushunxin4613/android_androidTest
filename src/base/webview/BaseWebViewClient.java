@@ -41,7 +41,6 @@ public class BaseWebViewClient extends WebViewClient {
 	@Override
 	public void onPageStarted(WebView view, String url, Bitmap favicon) {//加载前调用
 		factory.showDialog();
-		view.setAlpha(0);
 		view.getSettings().setBlockNetworkImage(true); //图片下载阻塞
 		super.onPageStarted(view, url, favicon);
 	}
@@ -49,7 +48,6 @@ public class BaseWebViewClient extends WebViewClient {
 	@Override
 	public void onPageFinished(WebView view, String url) {//加载后调用
 		factory.dismissDialog();
-		view.setAlpha(1);
 		view.getSettings().setBlockNetworkImage(false);
 		if (listener != null) {
 			listener.onFinishedListener(url);

@@ -520,8 +520,11 @@ public final class ConfigUtil {
 		public static final int INCLUDE_NEXT_ARR_ID[] = {
 			R.id.ac_setting_next0
 			,R.id.ac_setting_next1
+			,R.id.ac_setting_next2
 		};
-		public static final int INCLUDE_TV_ID = R.id.ac_setting_tv;
+		public static final int INCLUDE_TV_ARR_ID[] = {
+			R.id.ac_setting_tv
+		};
 
 	}
 

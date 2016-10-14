@@ -19,7 +19,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/view_margin_less"
         android:layout_marginRight="@dimen/view_margin_less"
         android:layout_toLeftOf="@+id/im"
         android:layout_toRightOf="@+id/include_next_tv_tv0" />

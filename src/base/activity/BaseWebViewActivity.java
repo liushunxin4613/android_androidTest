@@ -18,7 +18,7 @@ public abstract class BaseWebViewActivity extends BaseActionBarCenterActivity im
 
 
 	public abstract String getUriStr();
-	
+
 	@Override
 	public void initRootView() {
 		setContentView(R.layout.item_webview);
@@ -34,7 +34,7 @@ public abstract class BaseWebViewActivity extends BaseActionBarCenterActivity im
 		initListener();
 		webView.loadUrl(uriStr);
 	}
-	
+
 	/**
 	 * ³õÊ¼»¯¼àÌý
 	 */
@@ -44,7 +44,7 @@ public abstract class BaseWebViewActivity extends BaseActionBarCenterActivity im
 	@Override
 	public void onFinishedListener(String url) {
 	}
-	
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
@@ -102,7 +102,7 @@ public abstract class BaseWebViewActivity extends BaseActionBarCenterActivity im
 		return false;
 	}
 
-	
+
 	@Override  
 	public void onBackPressed() {
 		if(webView != null) {  

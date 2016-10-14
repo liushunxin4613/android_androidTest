@@ -38,7 +38,7 @@ public class SingleChoiceDialog extends BaseDialog {
 
 	public SingleChoiceDialog(Context context, String title, int checkedItem,
 			int itemsId) {
-		super(context, R.style.testDialog);
+		super(context, R.style.Style_Dialog_Center);
 		this.checkedItem = checkedItem;
 		this.title = title;
 		this.itemStr = context.getResources().getStringArray(itemsId);
@@ -47,7 +47,7 @@ public class SingleChoiceDialog extends BaseDialog {
 
 	public SingleChoiceDialog(Context context, String title, int checkedItem,
 			int itemsId, String posText, String nevText) {
-		super(context, R.style.testDialog);
+		super(context, R.style.Style_Dialog_Center);
 		this.checkedItem = checkedItem;
 		this.title = title;
 		this.itemStr = context.getResources().getStringArray(itemsId);

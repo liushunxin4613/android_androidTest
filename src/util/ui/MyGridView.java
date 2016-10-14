@@ -6,14 +6,13 @@ import com.leo.androidtest.R;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
@@ -24,12 +23,10 @@ public class MyGridView {
 	private Context context;
 	private OnClickListener listener;
 	
-	private View view;
+	private ScrollView view;
 	
 	private LinearLayout layout[];
 
-	private Handler mHandler;
-	
 	public MyGridView(Context context,OnClickListener listener) {
 		this.context = context;
 		this.listener = listener;
@@ -39,7 +36,7 @@ public class MyGridView {
 	public View initView() {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		view = inflater.inflate(R.layout.item_gridview2, null);
+		view = (ScrollView) inflater.inflate(R.layout.item_gridview2, null);
 		layout = new LinearLayout[GridView2Config.GRIDVIEW_COLOR_ARR.length];
 
 		for (int i = 0; i < layout.length; i++) {
@@ -53,25 +50,10 @@ public class MyGridView {
 			
 		}
 		
-		mHandler = new Handler(){
-			@Override
-			public void handleMessage(Message msg) {
-				switch (msg.what) {
-				case 0x123:
-					popUI(msg.arg1, msg.arg2);
-					break;
-				}
-			}
-		};
-
 		layout[1].post(new Runnable() {
 			@Override
 			public void run() {
-				Message msg = new Message();
-				msg.what = 0x123;
-				msg.arg1 = layout[1].getWidth();
-				msg.arg2 = layout[1].getHeight();
-				mHandler.sendMessage(msg);
+				popUI(layout[1].getWidth(), layout[1].getHeight());
 			}
 		});
 		
@@ -110,6 +92,7 @@ public class MyGridView {
 				break;
 			}
 		}
+		view.smoothScrollTo(0, 0);
 	}
 	
 }

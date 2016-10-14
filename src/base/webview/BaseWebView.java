@@ -61,7 +61,7 @@ public class BaseWebView extends WebView {
 			setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		}
 
-		settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+		settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 
 		settings.setDomStorageEnabled(true);
 

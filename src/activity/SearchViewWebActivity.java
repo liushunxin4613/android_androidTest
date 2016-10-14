@@ -13,6 +13,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView.OnQueryTextListener;
 
 public class SearchViewWebActivity extends WebActivity {
@@ -81,7 +82,6 @@ public class SearchViewWebActivity extends WebActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		super.onOptionsItemSelected(item);
 		switch (item.getItemId()) {
 		case R.id.menu_dysearch:
 			return true;
@@ -104,8 +104,15 @@ public class SearchViewWebActivity extends WebActivity {
 			}
 			Log.i(TAG, "textSize = " + textSize);
 			
+			webView.setVisibility(View.INVISIBLE);
 			webView.loadUrl("javascript:setFontSize("+ 
 					ApplicationConfig.TEXTSIZE_VALUE[Integer.parseInt(textSize)] +")");
+			webView.post(new Runnable() {
+				@Override
+				public void run() {
+					webView.setVisibility(View.VISIBLE);
+				}
+			});
 		}
 		
 		if(menu == null) return;

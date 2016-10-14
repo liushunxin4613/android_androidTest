@@ -13,6 +13,10 @@
 
     <include layout="@layout/include_view" />
 
+    <include android:id="@+id/ac_setting_next2" layout="@layout/include_next_textview" />
+
+    <include layout="@layout/include_view" />
+    
     <include android:id="@+id/ac_setting_tv" layout="@layout/include_textview" />
 
     <include layout="@layout/include_view" />
